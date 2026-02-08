@@ -18,12 +18,24 @@ const generateSkillsData = () => {
       // 제외 목록에 있는 스킬은 건너뛰기
       if (excludedSkills.includes(tag)) return;
 
-      if (!skillMap.has(tag)) {
-        skillMap.set(tag, { projects: [], count: 0 });
+      // MySQL과 MariaDB를 하나로 통합
+      let normalizedTag = tag;
+      if (tag === 'MySQL' || tag === 'MariaDB') {
+        normalizedTag = 'MySQL · MariaDB';
       }
-      const skill = skillMap.get(tag)!;
-      skill.projects.push(project.title);
-      skill.count += 1;
+      if (tag === 'Java') {
+        normalizedTag = 'Java · Spring';
+      }
+
+      if (!skillMap.has(normalizedTag)) {
+        skillMap.set(normalizedTag, { projects: [], count: 0 });
+      }
+      const skill = skillMap.get(normalizedTag)!;
+      // 중복 프로젝트 방지
+      if (!skill.projects.includes(project.title)) {
+        skill.projects.push(project.title);
+        skill.count += 1;
+      }
     });
   });
 
@@ -34,12 +46,15 @@ const generateSkillsData = () => {
     .slice(0, 10); // 상위 10개
 
   // 숙련도 계산: 프로젝트 수 * 25 + 20 (최소 45, 최대 100)
-  return mainSkills.map(([skill, data]) => ({
-    skill,
-    value: Math.min(100, data.count * 25 + 20),
-    projectCount: data.count,
-    projects: data.projects,
-  }));
+  return mainSkills.map(([skill, data]) => {
+    const calculatedValue = Math.min(100, data.count * 25 + 20);
+    return {
+      skill,
+      value: actualProficiency[skill] ?? calculatedValue, // 수동 설정 값이 있으면 사용
+      projectCount: data.count,
+      projects: data.projects,
+    };
+  });
 };
 
 // 레벨 계산 함수
@@ -55,9 +70,8 @@ const getLevel = (value: number): string => {
 const actualExperience: Record<string, string> = {
   'Node.js': '6년',
   'TypeScript': '6년',
-  'MySQL': '6년',
-  'MariaDB': '6년',
-  'Java': '4년',
+  'MySQL · MariaDB': '6년',
+  'Java · Spring': '1년',
   'JavaScript': '5년',
   'Next.js': '2년',
   'Python': '1년',
@@ -66,6 +80,20 @@ const actualExperience: Record<string, string> = {
   'Tailwind CSS': '3년',
   'Redis': '4년',
   'Socket.io': '4년',
+};
+
+// 실제 숙련도 매핑 (수동 설정 - 자동 계산 값을 오버라이드)
+const actualProficiency: Record<string, number> = {
+  'TypeScript': 85,
+  'Node.js': 85,
+  'MySQL · MariaDB': 80,
+  'Next.js': 55,
+  'Java · Spring': 45,
+};
+
+// 실제 레벨 매핑 (수동 설정 - 자동 계산 값을 오버라이드)
+const actualLevel: Record<string, string> = {
+  'Java · Spring': '초급',
 };
 
 // 경력 계산 함수 (실제 경력 우선, 없으면 프로젝트 수 기반)
@@ -87,13 +115,13 @@ const skillDescriptions: Record<string, string> = {
   'Next.js': 'SSR/SSG 최적화와 SEO를 고려한 모던 웹 애플리케이션 구축',
   'Node.js': 'RESTful API 서버 구축 및 실시간 데이터 처리 시스템 개발',
   'Express': 'Node.js 기반 백엔드 API 서버 및 미들웨어 구현',
-  'Java': '엔터프라이즈급 시스템 개발 및 데이터 처리 파이프라인 구축',
+  'Java · Spring': 'Spring 프레임워크 기반 백엔드 API 개발 및 데이터 처리',
   'JavaScript': '인터랙티브한 UI/UX 구현 및 웹 애플리케이션 개발',
   'Go': '고성능 서버 애플리케이션 및 데이터 처리 시스템 개발',
   'Python': 'AI/ML 기반 데이터 분석 및 백엔드 API 서버 구축',
   'FastAPI': '고성능 비동기 REST API 서버 개발',
   'Tailwind CSS': '유틸리티 우선 CSS 프레임워크로 반응형 UI 구현',
-  'MySQL': '관계형 데이터베이스 설계 및 쿼리 최적화',
+  'MySQL · MariaDB': '관계형 데이터베이스 설계, 쿼리 최적화, 트리거, 집계 함수, 파티셔닝 테이블 등 고급 데이터 관리',
   'Redis': '인메모리 데이터 저장소를 활용한 캐싱 및 실시간 데이터 처리',
   'Socket.io': 'WebSocket 기반 양방향 실시간 통신 구현',
   'Sequelize': 'Node.js ORM을 활용한 데이터베이스 관리',
@@ -121,7 +149,7 @@ export function Skills() {
 
     skillsData.forEach(({ skill, value, projectCount, projects }) => {
       details[skill] = {
-        level: getLevel(value),
+        level: actualLevel[skill] ?? getLevel(value), // 수동 설정 값이 있으면 사용
         experience: getExperience(skill, projectCount),
         description: skillDescriptions[skill] || '다양한 프로젝트에서 활용한 기술',
         projects,
