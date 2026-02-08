@@ -11,7 +11,7 @@ export function Home() {
     const navigate = useNavigate();
   const stats = [
     { label: '경력 연차', value: '6+' },
-    { label: '완료한 프로젝트', value: '8+' },
+    { label: '완료한 프로젝트', value: '9+' },
     // { label: '협업 국가', value: '3' },
   ];
 
@@ -51,7 +51,7 @@ export function Home() {
                 className="text-5xl md:text-7xl tracking-tight mb-6"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
+                transition={{ duration: 0.6, delay: 0.2 }} 
               >
                 송창범
               </motion.h1>

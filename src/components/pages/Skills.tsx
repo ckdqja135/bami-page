@@ -1,74 +1,137 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { motion } from 'motion/react';
 import { Card } from '../ui/card';
 import { Badge } from '../ui/badge';
 import { RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, ResponsiveContainer } from 'recharts';
+import { projects } from './Projects';
 
-const skillsData = [
-  { skill: 'React', value: 90 },
-  { skill: 'TypeScript', value: 90 },
-  { skill: 'Next.js', value: 70 },
-  { skill: 'Express', value: 50 },
-  { skill: 'CSS/Tailwind', value: 90 },
-  { skill: 'Dart', value: 70 },
-  { skill: 'Figma', value: 50 },
-];
+// 제외할 스킬 목록 (프레임워크 등)
+const excludedSkills = ['Express', 'Maven', 'Vercel', 'Ubuntu', 'Weather API', 'Naver API', 'SerpAPI', 'Telegram Bot API', 'reCAPTCHA'];
 
-// skillsData.skill 과 정확히 일치하도록 key 구성
-const skillDetails: Record<string, {
-  level: string;
-  experience: string;
-  description: string;
-  projects: string[];
-}> = {
-  React: {
-    level: '고급',
-    experience: '4년',
-    description: '현대적 훅/컴포넌트 패턴으로 확장 가능한 SPA/대시보드 구축',
-    projects: ['올인원 포토 솔루션', '이벤트 현장용 QR 포토미션 웹 서비스'],
-  },
-  TypeScript: {
-    level: '고급',
-    experience: '3년',
-    description: '타입 안전 설계(도메인 타입/유틸 타입)로 오류 감소 및 유지보수성 향상',
-    projects: ['상품 등록·관리 자동화 플랫폼', '섹터별 주식 데이터 분석 웹 서비스'],
-  },
-  'Next.js': {
-    level: '중급',
-    experience: '2년',
-    description: '라우팅/데이터패칭 최적화, 마케팅/포트폴리오/관리자 화면 제작',
-    projects: ['실시간 낚시 예약 및 낚시 정보 플랫폼', '하드웨어 회사 사이트', '웹 서비스 관리자 페이지'],
-  },
-  Express: {
-    level: '초급',
-    experience: '1년',
-    description: '간단한 REST API, 인증(JWT)과 배치 작업 등 실무 보조 백엔드',
-    projects: ['섹터별 주식 데이터 분석 웹 서비스 백앤드', '간단 CRUD API'],
-  },
-  'CSS/Tailwind': {
-    level: '고급',
-    experience: '4년',
-    description: 'Tailwind 기반 디자인 시스템, 다크모드/반응형/접근성 고려한 UI',
-    projects: ['관리자 디자인 시스템'],
-  },
-  Dart: {
-    level: '중급',
-    experience: '3년',
-    description: 'Flutter 앱 개발을 위한 Dart 문법/비동기/상태관리(Provider) 활용',
-    projects: ['Carsix Ambient(블루투스 LED)','아이돌 포토카드 이벤트 앱'],
-  },
-  Figma: {
-    level: '중급',
-    experience: '2년',
-    description: '와이어프레임/프로토타입 작성 및 개발 친화적 컴포넌트 설계',
-    projects: ['랜딩 시안', '화면 프로토타입'],
-  },
+// 프로젝트 데이터에서 스킬 추출 및 계산
+const generateSkillsData = () => {
+  const skillMap = new Map<string, { projects: string[]; count: number }>();
+
+  // 모든 프로젝트의 태그 수집
+  projects.forEach((project) => {
+    project.tags.forEach((tag) => {
+      // 제외 목록에 있는 스킬은 건너뛰기
+      if (excludedSkills.includes(tag)) return;
+
+      if (!skillMap.has(tag)) {
+        skillMap.set(tag, { projects: [], count: 0 });
+      }
+      const skill = skillMap.get(tag)!;
+      skill.projects.push(project.title);
+      skill.count += 1;
+    });
+  });
+
+  // 주요 기술만 선택 (2개 이상 프로젝트에서 사용된 기술)
+  const mainSkills = Array.from(skillMap.entries())
+    .filter(([_, data]) => data.count >= 2)
+    .sort((a, b) => b[1].count - a[1].count)
+    .slice(0, 10); // 상위 10개
+
+  // 숙련도 계산: 프로젝트 수 * 25 + 20 (최소 45, 최대 100)
+  return mainSkills.map(([skill, data]) => ({
+    skill,
+    value: Math.min(100, data.count * 25 + 20),
+    projectCount: data.count,
+    projects: data.projects,
+  }));
+};
+
+// 레벨 계산 함수
+const getLevel = (value: number): string => {
+  if (value >= 90) return '고급';
+  if (value >= 70) return '중급+';
+  if (value >= 50) return '중급';
+  if (value >= 30) return '초급+';
+  return '초급';
+};
+
+// 실제 경력 매핑 (수동 설정)
+const actualExperience: Record<string, string> = {
+  'Node.js': '6년',
+  'TypeScript': '6년',
+  'MySQL': '6년',
+  'MariaDB': '6년',
+  'Java': '4년',
+  'JavaScript': '5년',
+  'Next.js': '2년',
+  'Python': '1년',
+  'Go': '2년',
+  'FastAPI': '1년',
+  'Tailwind CSS': '3년',
+  'Redis': '4년',
+  'Socket.io': '4년',
+};
+
+// 경력 계산 함수 (실제 경력 우선, 없으면 프로젝트 수 기반)
+const getExperience = (skill: string, projectCount: number): string => {
+  // 실제 경력이 설정되어 있으면 그것을 사용
+  if (actualExperience[skill]) {
+    return actualExperience[skill];
+  }
+  // 없으면 프로젝트 수 기반으로 계산
+  if (projectCount >= 4) return '3년+';
+  if (projectCount >= 3) return '2년+';
+  if (projectCount >= 2) return '1년+';
+  return '1년 미만';
+};
+
+// 기술 설명 매핑
+const skillDescriptions: Record<string, string> = {
+  'TypeScript': '타입 안전성을 기반으로 확장 가능한 웹 애플리케이션 개발',
+  'Next.js': 'SSR/SSG 최적화와 SEO를 고려한 모던 웹 애플리케이션 구축',
+  'Node.js': 'RESTful API 서버 구축 및 실시간 데이터 처리 시스템 개발',
+  'Express': 'Node.js 기반 백엔드 API 서버 및 미들웨어 구현',
+  'Java': '엔터프라이즈급 시스템 개발 및 데이터 처리 파이프라인 구축',
+  'JavaScript': '인터랙티브한 UI/UX 구현 및 웹 애플리케이션 개발',
+  'Go': '고성능 서버 애플리케이션 및 데이터 처리 시스템 개발',
+  'Python': 'AI/ML 기반 데이터 분석 및 백엔드 API 서버 구축',
+  'FastAPI': '고성능 비동기 REST API 서버 개발',
+  'Tailwind CSS': '유틸리티 우선 CSS 프레임워크로 반응형 UI 구현',
+  'MySQL': '관계형 데이터베이스 설계 및 쿼리 최적화',
+  'Redis': '인메모리 데이터 저장소를 활용한 캐싱 및 실시간 데이터 처리',
+  'Socket.io': 'WebSocket 기반 양방향 실시간 통신 구현',
+  'Sequelize': 'Node.js ORM을 활용한 데이터베이스 관리',
+  'PM2': 'Node.js 프로세스 관리 및 무중단 배포',
+  'Nginx': '웹 서버 및 리버스 프록시 설정',
+  'Kafka': '대용량 메시지 큐 시스템 구축',
+  'Pixi.js': '2D WebGL 기반 고성능 그래픽 렌더링',
+  'RxJS': '반응형 프로그래밍 패턴을 활용한 비동기 데이터 스트림 처리',
 };
 
 export function Skills() {
-  // 초기 선택: skillsData 첫 항목과 동기화
-  const [selectedSkill, setSelectedSkill] = useState<string>(skillsData[0].skill);
   const [isDark, setIsDark] = useState(false);
+
+  // 프로젝트 데이터 기반으로 스킬 데이터 생성
+  const skillsData = useMemo(() => generateSkillsData(), []);
+
+  // 스킬 상세 정보 생성
+  const skillDetails = useMemo(() => {
+    const details: Record<string, {
+      level: string;
+      experience: string;
+      description: string;
+      projects: string[];
+    }> = {};
+
+    skillsData.forEach(({ skill, value, projectCount, projects }) => {
+      details[skill] = {
+        level: getLevel(value),
+        experience: getExperience(skill, projectCount),
+        description: skillDescriptions[skill] || '다양한 프로젝트에서 활용한 기술',
+        projects,
+      };
+    });
+
+    return details;
+  }, [skillsData]);
+
+  const [selectedSkill, setSelectedSkill] = useState<string>(skillsData[0]?.skill || '');
 
   // 다크모드 감지
   useEffect(() => {
@@ -81,7 +144,7 @@ export function Skills() {
   }, []);
 
   // skillDetails에 없는 스킬이 선택되는 경우를 방지
-  const safeSelected = skillDetails[selectedSkill] ? selectedSkill : skillsData.find(s => skillDetails[s.skill])?.skill ?? skillsData[0].skill;
+  const safeSelected = skillDetails[selectedSkill] ? selectedSkill : skillsData[0]?.skill || '';
 
   return (
     <div className="min-h-screen pt-32 pb-24">

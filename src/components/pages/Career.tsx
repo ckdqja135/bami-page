@@ -6,49 +6,63 @@ import { useEffect, useState } from 'react';
 
 const timeline = [
   {
-    year: '2023.12-현재',
-    role: '프론트엔드 개발자',
-  company: '프리랜서(개인사업자)',
-    description: 'Flutter/React/Next.js 중심의 웹·모바일 제품 개발 및 배포',
- achievements: [
-      'BLE·FCM 등 디바이스/알림 연동 실무',
-      'Swagger·Prisma 기반 API 문서화/ORM 운영',
-      'Next.js·React로 관리자/랜딩 다수 구축'
-    ],
-  },
-  {
-    year: '2021.07-2023.12',
-    role: '프론트엔드 개발자',
-    company: '반도체 공정진단 기업',
-     summary: 'React와 Flutter 기반의 데이터 시각화/실시간 모니터링 웹·모바일 화면 개발',
-  achievements: [
-      '프로덕션 앱 다수 구축(사내·외부 프로젝트)',
-      '대용량 데이터 decimation 적용으로 렌더 성능 개선',
-      '공통 컴포넌트화로 화면 재사용성/유지보수성 향상',
-    ],
-  },
-  {
-    year: '2021.01-2021.07',
-    role: '웹 개발자 양성과정 수료',
-    company: '더조은 컴퓨터 아카데미',
-    description: '현대적인 웹 인터페이스 제작 및 디자인 팀과 협업',
+    year: '2025.11 - 현재',
+    role: '백엔드 개발자',
+    company: '㈜에스에이엠지엔터테인먼트 - 플랫폼사업팀 사원',
+    description: '플랫폼 서비스 백엔드 개발',
     achievements: [
-      'Javascript , HTML , CSS , 웹 퍼블리싱 등 웹 기술 학습',
-      '프로젝트 중심 커리큘럼을 통해 프론트엔드 기초 실습 경험',
+      '이모션 캐슬 서비스 백엔드 API 개발',
+      '자사몰 통합 어드민 시스템 구축',
+      'Nest.js 기반 서버 아키텍처 설계 및 구현',
+    ],
+  },
+  {
+    year: '2024.02 - 2025.10',
+    role: '백엔드 개발자',
+    company: '㈔한국녹색기후기술원 - 에너지플랫폼개발팀 대리',
+    description: 'xEMS 솔루션 V2.2/V2.2.1 고도화 프로젝트',
+    achievements: [
+      '건물/설비 에너지 데이터 집계 엔진 신규 개발 및 고도화',
+      'Connection Pool 구조 전환으로 실시간 집계 안정성 확보',
+      '통합 에너지 분석 API 및 스케줄러 시스템 개발',
+      'Weather API 연동 및 유효성 검사 미들웨어 구현',
+      '2024년 한국에너지대상 장관상, 2025년 환경의날 환경부장관상 수상',
+    ],
+  },
+  {
+    year: '2020.04 - 2023.09',
+    role: '웹 개발자',
+    company: '소프트위즈 - 웹팀 대리',
+    description: '바이너리 거래 플랫폼 및 암호화폐 시세 조회 서비스 개발',
+    achievements: [
+      '바이너리 옵션 거래 플랫폼 프론트엔드 개발 (Pixi.js, JavaScript)',
+      '코인 실시간 시세 조회 시스템 개발 (TypeScript, Java, Socket.io, Redis)',
+      '로그 서버 개발 (Go, Kafka) 및 Telegram Bot API 연동',
+      '자사 홈페이지 풀스택 개발 (Node.js, Express)',
+    ],
+  },
+  {
+    year: '2020.01 - 2020.03',
+    role: '서버 관리자',
+    company: '㈜볼트홀 - 사원',
+    description: '스트리밍 플랫폼 서비스 어드민 페이지 개발',
+    achievements: [
+      '스트리밍 플랫폼 관리자 페이지 개발',
+      '서버 인프라 관리 및 모니터링',
     ],
   },
 ];
 
 const stats = [
-  { icon: Briefcase, label: '완료한 프로젝트', value: '8+', color: 'text-primary' },
-  // { icon: Rocket, label: '앱 출시', value: '3', color: 'text-accent' },
-  { icon: Users, label: '만족한 고객', value: '10+', color: 'text-accent' },
+  { icon: Briefcase, label: '완료한 프로젝트', value: '6+', color: 'text-primary' },
+  { icon: Trophy, label: '수상 경력', value: '2회', color: 'text-accent' },
+  { icon: Users, label: '근무 회사', value: '4곳', color: 'text-accent' },
 ];
 
 const workDistribution = [
-  { name: '프론트엔드', value: 70 },
-  { name: '백엔드', value: 20 },
-  { name: '디자인', value: 10 },
+  { name: '백엔드', value: 60 },
+  { name: '프론트엔드', value: 30 },
+  { name: '기타', value: 10 },
 ];
 
 export function Career() {
@@ -169,9 +183,9 @@ export function Career() {
                   outerRadius={100}
                   dataKey="value"
                 >
-                  <Cell fill="#6B7CFF" />
-                  <Cell fill="#94A3B8" />
-                  <Cell fill="#FFB3C1" />
+                  <Cell fill="#6B7CFF" /> {/* 백엔드 */}
+                  <Cell fill="#94A3B8" /> {/* 프론트엔드 */}
+                  <Cell fill="#FFB3C1" /> {/* 기타 */}
                 </Pie>
                 <Tooltip 
                   formatter={(value, name) => [`${value}%`, name]}
