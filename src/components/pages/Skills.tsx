@@ -94,6 +94,7 @@ const actualProficiency: Record<string, number> = {
 // 실제 레벨 매핑 (수동 설정 - 자동 계산 값을 오버라이드)
 const actualLevel: Record<string, string> = {
   'Java · Spring': '초급',
+  'Next.js': '초급'
 };
 
 // 경력 계산 함수 (실제 경력 우선, 없으면 프로젝트 수 기반)
