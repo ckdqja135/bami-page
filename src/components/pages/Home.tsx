@@ -38,8 +38,8 @@ export function Home() {
               <div className="relative">
                 <div className="absolute -inset-1 bg-gradient-to-r from-primary to-accent rounded-full blur-lg opacity-30"></div>
                 <ImageWithFallback
-                   src="/coffee.jpeg"     
-                  alt="이원희 프로필 사진"
+                   src="/profile.jpg"     
+                  alt="송창범 프로필 사진"
                   className="relative w-64 h-64 lg:w-80 lg:h-80 rounded-full object-cover border-4 border-background shadow-2xl"
                 />
               </div>
