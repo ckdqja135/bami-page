@@ -87,7 +87,7 @@ const actualProficiency: Record<string, number> = {
   'TypeScript': 85,
   'Node.js': 85,
   'MySQL · MariaDB': 80,
-  'Next.js': 55,
+  'Next.js': 45,
   'Java · Spring': 45,
 };
 
