@@ -287,7 +287,8 @@ export const projects = [
       '/newsCrawler/newsCrawler3.png',
       '/newsCrawler/newsCrawler4.png',
       '/newsCrawler/newsCrawler5.png'
-    ]
+    ],
+    demoUrl: 'https://mynews-c.vercel.app/',
   },
   {
     id: 10,
