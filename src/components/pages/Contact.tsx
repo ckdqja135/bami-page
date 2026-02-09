@@ -4,27 +4,21 @@ import { Card } from '../ui/card';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { Textarea } from '../ui/textarea';
-import { Github, Linkedin, Mail, MapPin, Globe } from 'lucide-react';
+import { Github, Mail, MapPin, Globe } from 'lucide-react';
 import { toast } from 'sonner@2.0.3';
 
 const socialLinks = [
   {
     name: 'GitHub',
     icon: Github,
-    url: 'https://github.com/eejoy1212',
-    handle: '@wonheelee',
-  },
-  {
-    name: 'LinkedIn',
-    icon: Linkedin,
-    url: 'www.linkedin.com/in/원희-이-4370a1253',
-    handle: 'wonhee-lee',
+    url: 'https://github.com/ckdqja135',
+    handle: '@ckdqja135',
   },
   {
     name: 'Email',
     icon: Mail,
-    url: 'lwh961212@gmail.com',
-    handle: 'lwh961212@gmail.com',
+    url: 'ckdqja13580@gmail.com',
+    handle: 'ckdqja13580@gmail.com',
   },
 ];
 
@@ -32,7 +26,7 @@ const contactInfo = [
   {
     icon: MapPin,
     label: '위치',
-    value: '대한민국 수원',
+    value: '대한민국, 서울',
   },
   {
     icon: Globe,
@@ -194,10 +188,10 @@ const normalizeUrl = (url: string) => {
 
             {/* Availability */}
             <Card className="p-8 bg-primary text-primary-foreground">
-              <h3 className="text-xl mb-3 tracking-tight">채용 가능</h3>
+              <h3 className="text-xl mb-3 tracking-tight">현재 상태</h3>
               <p className="leading-relaxed tracking-tight opacity-90">
-                현재 프리랜서로 프로젝트를 진행 중이며, 정규직 포지션에도 열려 있습니다.
-축적된 경험을 바탕으로 더 큰 임팩트를 만들어낼 수 있는 팀에 기여하고자 합니다.
+                현재 정규직으로 재직 중입니다.
+                협업 제안이나 사이드 프로젝트에 대한 문의는 언제든 환영합니다.
               </p>
             </Card>
           </motion.div>

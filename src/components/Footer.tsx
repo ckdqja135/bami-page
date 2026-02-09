@@ -13,7 +13,7 @@ export function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="text-center md:text-left">
             <p className="text-muted-foreground tracking-tight">
-              © 2025 송창범. All rights reserved.
+              © 2026 송창범. All rights reserved.
             </p>
             <p className="text-muted-foreground tracking-tight mt-1">
               백엔드 개발자

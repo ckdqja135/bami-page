@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { Card } from '../ui/card';
 import { Badge } from '../ui/badge';
 import { ImageWithFallback } from '../figma/ImageWithFallback';
-import { ExternalLink, Github, Calendar, User, CheckCircle2, X } from 'lucide-react';
+import { ExternalLink, Github, Calendar, User, CheckCircle2, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '../ui/dialog';
 import { Button } from '../ui/button';
 import { Separator } from '../ui/separator';
@@ -289,16 +289,48 @@ export const projects = [
       '/newsCrawler/newsCrawler5.png'
     ]
   },
+  {
+    id: 10,
+    title: '이모션캐슬 시네마',
+    description: 'Spring Boot와 React Native 기반의 OTT 스트리밍 플랫폼',
+    fullDescription: 'Spring Boot를 기반으로 개발된 OTT 스트리밍 플랫폼입니다. 웹과 React Native 앱을 모두 지원하며, AWS CloudFront를 통한 HLS 스트리밍으로 안정적인 영상 재생 서비스를 제공합니다. 특히 크롬캐스트 연결 기능을 구현하여 모바일 기기에서 TV로 콘텐츠를 전송할 수 있으며, 크롬캐스트 통신을 위한 전용 프록시 서버를 개발하여 안정적인 캐스팅 환경을 구축했습니다.',
+    image: '/cinema/cinema.png',
+    tags: ['Spring Boot', 'React Native', 'AWS CloudFront', 'Chromecast', 'HLS', 'Proxy Server'],
+    category: 'Java',
+    period: '2025.11 ~ 현재',
+    role: '백엔드 개발자',
+    features: [
+      '멀티 플랫폼 지원 - 웹과 React Native 앱(Android, iOS)을 통한 크로스 플랫폼 서비스 제공',
+      'HLS 스트리밍 - AWS CloudFront를 활용한 안정적인 영상 스트리밍 구현',
+      '크롬캐스트 연동 - 모바일에서 TV로 콘텐츠를 전송할 수 있는 캐스팅 기능',
+      '프록시 서버 - 크롬캐스트 통신을 위한 전용 프록시 서버 개발',
+    ],
+    points: [
+      'Spring Boot를 사용하여 REST API 서버 개발 및 영상 콘텐츠 관리 시스템 구축',
+      'AWS CloudFront를 활용한 HLS(HTTP Live Streaming) 기반 영상 스트리밍 인프라 구현',
+      'React Native 앱과 웹 플랫폼 간 일관된 사용자 경험을 제공하기 위한 백엔드 API 설계 및 개발',
+      '크롬캐스트 SDK를 활용하여 모바일 기기에서 TV로 콘텐츠를 전송할 수 있는 캐스팅 기능 개발',
+      '크롬캐스트 연결의 안정성을 위한 전용 프록시 서버 구현 및 통신 최적화',
+      '영상 재생 품질 최적화를 위한 HLS 세그먼트 처리 및 CDN 캐싱 전략 수립',
+    ],
+    demoUrl: 'https://cinema.emotioncastle.com/',
+    screenshots: [
+      '/cinema/cinema.png',
+      '/cinema/cinema2.png',
+    ]
+  },
 ];
 
 const allTags = ['전체', 'Go', 'Java', 'JavaScript', 'Next.js', 'Node.js', 'Python', 'TypeScript'];
+const ITEMS_PER_PAGE = 9;
 
 export function Projects() {
   const [selectedTag, setSelectedTag] = useState('전체');
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
-const [selectedImage, setSelectedImage] = useState<string | null>(null);
-const isVideo = (src: string) => /\.(mp4|webm|ogg)(\?.*)?$/i.test(src);
-const [selectedMedia, setSelectedMedia] = useState<string | null>(null);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const isVideo = (src: string) => /\.(mp4|webm|ogg)(\?.*)?$/i.test(src);
+  const [selectedMedia, setSelectedMedia] = useState<string | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const filteredProjects =
     selectedTag === '전체'
@@ -308,6 +340,23 @@ const [selectedMedia, setSelectedMedia] = useState<string | null>(null);
             ? project.category.includes(selectedTag)
             : project.category === selectedTag
         );
+
+  // 페이징 처리
+  const totalPages = Math.ceil(filteredProjects.length / ITEMS_PER_PAGE);
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const endIndex = startIndex + ITEMS_PER_PAGE;
+  const paginatedProjects = filteredProjects.slice(startIndex, endIndex);
+
+  // 태그 변경 시 첫 페이지로 이동
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedTag]);
+
+  // 페이지 변경 시 스크롤 맨 위로
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <div className="min-h-screen pt-32 pb-24">
@@ -349,66 +398,85 @@ const [selectedMedia, setSelectedMedia] = useState<string | null>(null);
           ))}
         </motion.div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ y: -8 }}
+        {/* Projects Grid with Side Arrows */}
+        <div className="flex items-center gap-4">
+          {/* < 버튼 */}
+          {totalPages > 1 ? (
+            <button
+              onClick={() => { if (currentPage > 1) handlePageChange(currentPage - 1); }}
+              disabled={currentPage === 1}
+              className="shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-card border border-border shadow-md hover:bg-accent hover:shadow-lg transition-all disabled:opacity-30 disabled:pointer-events-none"
+              aria-label="이전 페이지"
             >
-            <Card
-  className="overflow-hidden group cursor-pointer hover:shadow-[0_8px_24px_rgba(107,124,255,0.15)] transition-all flex flex-col h-full"
-  onClick={() => setSelectedProject(project)}
->
-  {/* 이미지 */}
-  <div className="relative aspect-[4/3] overflow-hidden">
-    <ImageWithFallback
-      src={project.image}
-      alt={project.title}
-      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-    />
-    <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-8">
-      <span className="text-white flex items-center gap-2">
-        자세히 보기 <ExternalLink className="h-4 w-4" />
-      </span>
-    </div>
-  </div>
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+          ) : <div className="w-10 shrink-0" />}
 
-  {/* 본문 */}
-  <div className="p-6 flex flex-col flex-grow">
-    <h3 className="text-xl mb-2 tracking-tight">{project.title}</h3>
+          {/* 카드 그리드 */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 flex-1 min-w-0">
+            {paginatedProjects.map((project, index) => (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ y: -8 }}
+              >
+              <Card
+                className="overflow-hidden group cursor-pointer hover:shadow-[0_8px_24px_rgba(107,124,255,0.15)] transition-all flex flex-col h-full"
+                onClick={() => setSelectedProject(project)}
+              >
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <ImageWithFallback
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-8">
+                    <span className="text-white flex items-center gap-2">
+                      자세히 보기 <ExternalLink className="h-4 w-4" />
+                    </span>
+                  </div>
+                </div>
+                <div className="p-6 flex flex-col flex-grow">
+                  <h3 className="text-xl mb-2 tracking-tight">{project.title}</h3>
+                  <p
+                    className="text-muted-foreground mb-4 tracking-tight flex-grow"
+                    style={{
+                      display: "-webkit-box",
+                      WebkitLineClamp: 2,
+                      WebkitBoxOrient: "vertical",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      minHeight: "3rem",
+                    }}
+                  >
+                    {project.description}
+                  </p>
+                  <div className="mt-auto flex flex-wrap gap-2">
+                    {project.tags.map((tag) => (
+                      <Badge key={tag} variant="secondary" className="text-xs">
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
+              </Card>
+              </motion.div>
+            ))}
+          </div>
 
-    {/* 설명 고정 높이 + ellipsis */}
-    <p
-      className="text-muted-foreground mb-4 tracking-tight flex-grow"
-      style={{
-        display: "-webkit-box",
-        WebkitLineClamp: 2,
-        WebkitBoxOrient: "vertical",
-        overflow: "hidden",
-        textOverflow: "ellipsis",
-        minHeight: "3rem", // 줄 수 맞추기용 높이 (2줄 기준)
-      }}
-    >
-      {project.description}
-    </p>
-
-    {/* 태그는 하단 고정 */}
-    <div className="mt-auto flex flex-wrap gap-2">
-      {project.tags.map((tag) => (
-        <Badge key={tag} variant="secondary" className="text-xs">
-          {tag}
-        </Badge>
-      ))}
-    </div>
-  </div>
-</Card>
-
-            </motion.div>
-          ))}
+          {/* > 버튼 */}
+          {totalPages > 1 ? (
+            <button
+              onClick={() => { if (currentPage < totalPages) handlePageChange(currentPage + 1); }}
+              disabled={currentPage === totalPages}
+              className="shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-card border border-border shadow-md hover:bg-accent hover:shadow-lg transition-all disabled:opacity-30 disabled:pointer-events-none"
+              aria-label="다음 페이지"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
+          ) : <div className="w-10 shrink-0" />}
         </div>
       </div>
 

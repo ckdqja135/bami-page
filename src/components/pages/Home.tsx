@@ -1,7 +1,7 @@
 import { motion } from 'motion/react';
 import { Button } from '../ui/button';
 import { Card } from '../ui/card';
-import { Download, ExternalLink } from 'lucide-react';
+import { Mail, ExternalLink } from 'lucide-react';
 import { ImageWithFallback } from '../figma/ImageWithFallback';
 import { useNavigate } from 'react-router-dom';
 
@@ -79,12 +79,12 @@ export function Home() {
                   프로젝트 보기 <ExternalLink className="ml-2 h-4 w-4" />
                 </Button>
                 <Button
-                  onClick={() => navigate('downloads')}
+                  onClick={() => navigate('contact')}
                   variant="outline"
                   size="lg"
                   className="px-8  cursor-pointer"
                 >
-                  이력서 다운로드 <Download className="ml-2 h-4 w-4" />
+                  연락하기 <Mail className="ml-2 h-4 w-4" />
                 </Button>
               </motion.div>
             </div>

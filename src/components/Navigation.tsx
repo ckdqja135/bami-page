@@ -21,7 +21,6 @@ export function Navigation() {
     { label: "스킬", to: "/skills" },
     { label: "경력", to: "/career" },
     { label: "블로그", to: "/blog" },
-    { label: "다운로드", to: "/downloads" },
     { label: "연락하기", to: "/contact" },
   ];
 
