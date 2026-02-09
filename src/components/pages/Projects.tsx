@@ -296,7 +296,7 @@ export const projects = [
     description: 'Spring Boot와 React Native 기반의 OTT 스트리밍 플랫폼',
     fullDescription: 'Spring Boot를 기반으로 개발된 OTT 스트리밍 플랫폼입니다. 웹과 React Native 앱을 모두 지원하며, AWS CloudFront를 통한 HLS 스트리밍으로 안정적인 영상 재생 서비스를 제공합니다. 특히 크롬캐스트 연결 기능을 구현하여 모바일 기기에서 TV로 콘텐츠를 전송할 수 있으며, 크롬캐스트 통신을 위한 전용 프록시 서버를 개발하여 안정적인 캐스팅 환경을 구축했습니다.',
     image: '/cinema/cinema.png',
-    tags: ['Spring Boot', 'React Native', 'AWS CloudFront', 'Chromecast', 'HLS', 'Proxy Server'],
+    tags: ['Java', 'Spring Boot', 'React Native', 'AWS CloudFront', 'Chromecast', 'HLS', 'Proxy Server'],
     category: 'Java',
     period: '2025.11 ~ 현재',
     role: '백엔드 개발자',
