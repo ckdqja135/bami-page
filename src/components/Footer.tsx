@@ -16,7 +16,7 @@ export function Footer() {
               © 2026 송창범. All rights reserved.
             </p>
             <p className="text-muted-foreground tracking-tight mt-1">
-              백엔드 개발자
+              AI 엔지니어 개발자
             </p>
           </div>
           <div className="flex items-center gap-4">
