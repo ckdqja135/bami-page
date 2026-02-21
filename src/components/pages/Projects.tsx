@@ -226,6 +226,8 @@ export const projects = [
       '/ori/ori7.png',
       '/ori/ori8.png',
       '/ori/ori9.png',
+      '/ori/ori10.png',
+      '/ori/ori11.png',
     ]
   },
   {
@@ -260,33 +262,39 @@ export const projects = [
   {
     id: 9,
     title: 'AI 뉴스 서치',
-    description: '시맨틱 검색과 AI 분석을 결합한 스마트 뉴스 검색 플랫폼',
-    fullDescription: 'FastAPI와 Next.js로 구축한 AI 기반 뉴스 검색 서비스입니다. SerpAPI를 활용해 Google News 데이터를 수집하고, Sentence Transformers 기반 한국어 시맨틱 검색으로 키워드 매칭을 넘어선 의미 중심 검색을 제공합니다. 또한 LLM(OpenAI/Claude)을 통해 뉴스의 핵심 요약, 감성 분석, 트렌드 인사이트 등 고도화된 분석 기능을 지원합니다. 언론사 필터, 북마크, 다크모드 등 사용자 편의 기능도 함께 제공해 검색부터 분석까지 한 흐름으로 완성했습니다.',
+    description: 'TF-IDF 시맨틱 검색, Cerebras LLM 분석, Lark 알림을 결합한 AI 뉴스 플랫폼',
+    fullDescription: 'Express.js와 Next.js 14로 구축한 AI 기반 뉴스 검색·분석 플랫폼입니다. Google News RSS와 Naver News 스크래핑으로 다중 소스 뉴스를 수집하고, TF-IDF 코사인 유사도 기반 시맨틱 검색으로 의미 중심 탐색을 제공합니다. Cerebras Llama 3.1-8b LLM을 통해 뉴스 핵심 요약, 감성 분석, 트렌드 인사이트를 생성하며, Xenova Transformers 다국어 임베딩과 로지스틱 회귀 기반 Active Learning 감성 분류 파이프라인도 구축했습니다. Lark Webhook 연동으로 스케줄 기반 뉴스 다이제스트 자동 발송 기능까지 지원합니다.',
     image: '/newsCrawler/newsCrawler.png',
-    tags: ['Next.js', 'TypeScript', 'FastAPI', 'Python', 'SerpAPI', 'AI/ML', 'LLM'],
-    category: ['Next.js', ", " , 'Python'],
+    tags: ['Next.js', 'TypeScript', 'Express.js', 'Node.js', 'Cerebras LLM', 'Lark', 'AI/ML'],
+    category: ['Next.js', 'Node.js'],
     period: '2026.02 ~ 현재',
     role: '풀스택 개발자',
     features: [
-      '듀얼 검색 시스템 - 일반 키워드 검색과 AI 시맨틱 검색으로 의미 기반 뉴스 탐색',
-      'AI 뉴스 분석 - 임베딩 기반 시맨틱 검색 및 LLM 기반 핵심 요약, 주요 포인트, 감성 분석, 트렌드 분석 제공',
-      '고급 필터링 - 언론사 필터, 날짜 범위 설정, 언론사 제외 기능',
-      '편의 기능 - 북마크, 검색 히스토리, 다크모드, 자동 검색, 반응형 UI',
+      '듀얼 검색 시스템 - 키워드 검색과 TF-IDF 코사인 유사도 기반 시맨틱 검색, 유사도 임계값 슬라이더로 검색 정밀도 조절',
+      'AI 뉴스 분석 - Cerebras LLM 기반 핵심 요약, 주요 포인트, 감성 분석(-1~+1 스코어), 트렌드 분석 제공',
+      '감성 분류 파이프라인 - LLM·HuggingFace 자동 라벨링, 수동 라벨링, Active Learning 기반 모델 자동 재학습',
+      'Lark 연동 - Webhook 기반 뉴스 다이제스트 자동 발송, Cron 스케줄링, 감성 필터링, 수동 전송 지원',
+      '다국적 언론사 관리 - 한국·미국·영국·통신사 등 50개 이상 언론사 카테고리별 포함/제외 필터링',
+      '편의 기능 - 북마크, 검색 히스토리, 다크모드, 자동 검색 프리셋, 리스트/그리드 뷰 전환, 반응형 UI',
     ],
     points: [
-      'FastAPI와 Next.js 14를 활용한 풀스택 아키텍처 구축 및 TypeScript로 타입 안전성 확보',
-      'SerpAPI를 통한 Google News 크롤링과 Naver News API, RSS Parser를 활용한 다중 뉴스 소스 통합',
-      'Sentence Transformers 한국어 임베딩 모델을 적용하여 동의어와 유사 의미를 인식하는 시맨틱 검색 구현',
-      'LLM(OpenAI/Claude)을 연동하여 뉴스 핵심 요약, 감성 분석, 트렌드 분석 등 AI 기반 뉴스 인사이트 제공',
-      'SHA256 기반 고유 ID 생성, Rate Limiting(분당 60회), 캐싱 시스템을 통한 안정적인 서비스 운영',
-      '언론사 필터링, 북마크, 검색 히스토리, 다크모드 등 사용자 경험 중심의 다양한 편의 기능 구현',
+      'Express.js와 Next.js 14 App Router를 활용한 풀스택 아키텍처 구축 및 TypeScript 타입 안전성 확보',
+      'Google News RSS 파싱과 Naver News Cheerio 스크래핑을 Promise.allSettled로 병렬 수집하고, Bigram Jaccard 유사도 기반 중복 제거 파이프라인 구현',
+      'TF-IDF 벡터화와 코사인 유사도 기반 시맨틱 검색 엔진을 직접 구현하여 한국어·영어 혼합 토큰 처리',
+      'Cerebras Llama 3.1-8b LLM을 활용한 뉴스 종합 분석(요약, 감성, 트렌드, 핵심 포인트) 및 배치 감성 분류(10건/호출)',
+      'Xenova paraphrase-multilingual-MiniLM-L12-v2 임베딩(384차원)과 로지스틱 회귀 분류기를 결합한 Active Learning 감성 분석 파이프라인 구축',
+      'Lark Webhook 연동으로 Cron 스케줄 기반 뉴스 다이제스트 자동 발송, 감성 필터링 및 인터랙티브 카드 포맷 지원',
+      'MD5 해시 기반 다중 캐시(키워드·시맨틱·분석별 TTL 분리), Rate Limiting(분당 60회), 재시도 로직을 통한 안정적 서비스 운영',
+      '자연어 스케줄 파서("매일 오전 9시" → Cron 변환), 시드 데이터 백그라운드 수집, 자동 재학습 트리거 등 자동화 시스템 구현',
     ],
     screenshots: [
       '/newsCrawler/newsCrawler.png',
       '/newsCrawler/newsCrawler2.png',
       '/newsCrawler/newsCrawler3.png',
       '/newsCrawler/newsCrawler4.png',
-      '/newsCrawler/newsCrawler5.png'
+      '/newsCrawler/newsCrawler5.png',
+      '/newsCrawler/newsCrawler6.png',
+      '/newsCrawler/newsCrawler7.png',
     ],
     demoUrl: 'https://mynews-c.vercel.app/',
   },
@@ -330,7 +338,7 @@ export function Projects() {
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const isVideo = (src: string) => /\.(mp4|webm|ogg)(\?.*)?$/i.test(src);
-  const [selectedMedia, setSelectedMedia] = useState<string | null>(null);
+  const [selectedMedia, setSelectedMedia] = useState<number | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
 
   const filteredProjects =
@@ -499,16 +507,16 @@ export function Projects() {
                   {selectedProject.title}
                 </DialogTitle>
               </DialogHeader>
-              {/* Main Image */}
-            <div className="relative w-full h-[56vh] flex items-center justify-center overflow-hidden rounded-lg mb-6">
-  <ImageWithFallback
-    src={selectedProject.image}
-    alt={selectedProject.title}
-    className="max-h-full max-w-full w-auto h-auto object-contain"
-  />
-              
-
-              </div>
+              {/* Main Image Slider */}
+              <ProjectImageSlider
+                images={(selectedProject.screenshots?.length
+                  ? selectedProject.screenshots
+                  : [selectedProject.image]
+                ).map((src, i) => ({
+                  src,
+                  alt: `${selectedProject.title} ${i + 1}`,
+                }))}
+              />
 
               {/* Project Info */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
@@ -622,7 +630,7 @@ export function Projects() {
             <div
               key={index}
               className="relative aspect-video overflow-hidden rounded-lg cursor-pointer group bg-black"
-              onClick={() => setSelectedMedia(media)}
+              onClick={() => setSelectedMedia(index)}
               title="클릭하여 크게 보기"
             >
               {video ? (
@@ -652,37 +660,83 @@ export function Projects() {
   </>
 )}
 
-<Dialog open={!!selectedMedia} onOpenChange={() => setSelectedMedia(null)}>
+<Dialog open={selectedMedia !== null} onOpenChange={() => setSelectedMedia(null)}>
   <DialogContent className="p-0 bg-transparent border-0 shadow-none max-w-[95vw] max-h-[90vh] flex items-center justify-center">
-    {selectedMedia && (
-      <div className="relative w-full h-full flex items-center justify-center">
-        {/* 닫기 버튼 */}
-        <button
-          onClick={() => setSelectedMedia(null)}
-          className="absolute top-4 right-4 z-50 bg-black/60 text-white rounded-full p-2 hover:bg-black/80"
-          aria-label="닫기"
+    {selectedMedia !== null && selectedProject?.screenshots && (() => {
+      const mediaList = selectedProject.screenshots;
+      const mediaSrc = mediaList[selectedMedia];
+      const total = mediaList.length;
+      const hasPrev = selectedMedia > 0;
+      const hasNext = selectedMedia < total - 1;
+      return (
+        <div
+          className="flex flex-col items-center gap-3 w-full h-full"
+          onKeyDown={(e) => {
+            if (e.key === 'ArrowLeft' && hasPrev) setSelectedMedia(selectedMedia - 1);
+            if (e.key === 'ArrowRight' && hasNext) setSelectedMedia(selectedMedia + 1);
+            if (e.key === 'Escape') setSelectedMedia(null);
+          }}
+          tabIndex={0}
+          ref={(el) => el?.focus()}
         >
-          <X className="w-5 h-5" />
-        </button>
+          {/* 닫기 버튼 — 화면 오른쪽 상단 고정 */}
+          <button
+            onClick={() => setSelectedMedia(null)}
+            className="fixed top-4 right-4 z-[60] bg-black/70 text-white rounded-full p-2 hover:bg-black/90 transition"
+            aria-label="닫기"
+          >
+            <X className="w-5 h-5" />
+          </button>
 
-        {/* 이미지 / 비디오 분기 */}
-        {isVideo(selectedMedia) ? (
-          <video
-            src={selectedMedia}
-            controls
-            autoPlay
-            playsInline
-            className="max-w-full max-h-[90vh] object-contain rounded-lg"
-          />
-        ) : (
-          <img
-            src={selectedMedia}
-            alt="확대 이미지"
-            className="max-w-full max-h-[90vh] object-contain rounded-lg"
-          />
-        )}
-      </div>
-    )}
+          {/* 화살표 + 이미지 가로 배치 */}
+          <div className="flex items-center gap-2 md:gap-4 min-w-0">
+            {/* 이전 버튼 */}
+            <button
+              onClick={() => hasPrev && setSelectedMedia(selectedMedia - 1)}
+              disabled={!hasPrev}
+              className="shrink-0 bg-black/60 text-white rounded-full p-2 hover:bg-black/80 transition disabled:opacity-30 disabled:cursor-not-allowed"
+              aria-label="이전 이미지"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+
+            {/* 이미지 / 비디오 */}
+            {isVideo(mediaSrc) ? (
+              <video
+                src={mediaSrc}
+                controls
+                autoPlay
+                playsInline
+                className="max-w-[calc(95vw-120px)] md:max-w-[calc(95vw-160px)] max-h-[75vh] object-contain rounded-lg"
+              />
+            ) : (
+              <img
+                src={mediaSrc}
+                alt={`${selectedProject.title} 스크린샷 ${selectedMedia + 1}`}
+                className="max-w-[calc(95vw-120px)] md:max-w-[calc(95vw-160px)] max-h-[75vh] object-contain rounded-lg"
+              />
+            )}
+
+            {/* 다음 버튼 */}
+            <button
+              onClick={() => hasNext && setSelectedMedia(selectedMedia + 1)}
+              disabled={!hasNext}
+              className="shrink-0 bg-black/60 text-white rounded-full p-2 hover:bg-black/80 transition disabled:opacity-30 disabled:cursor-not-allowed"
+              aria-label="다음 이미지"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+          </div>
+
+          {/* 위치 인디케이터 */}
+          {total > 1 && (
+            <div className="bg-black/60 text-white text-sm px-3 py-1 rounded-full">
+              {selectedMedia + 1} / {total}
+            </div>
+          )}
+        </div>
+      );
+    })()}
   </DialogContent>
 </Dialog>
 
