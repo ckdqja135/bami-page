@@ -262,15 +262,15 @@ export const projects = [
   {
     id: 9,
     title: 'AI 뉴스 서치',
-    description: 'TF-IDF 시맨틱 검색, Cerebras LLM 분석, Lark 알림을 결합한 AI 뉴스 플랫폼',
-    fullDescription: 'Express.js와 Next.js 14로 구축한 AI 기반 뉴스 검색·분석 플랫폼입니다. Google News RSS와 Naver News 스크래핑으로 다중 소스 뉴스를 수집하고, TF-IDF 코사인 유사도 기반 시맨틱 검색으로 의미 중심 탐색을 제공합니다. Cerebras Llama 3.1-8b LLM을 통해 뉴스 핵심 요약, 감성 분석, 트렌드 인사이트를 생성하며, Xenova Transformers 다국어 임베딩과 로지스틱 회귀 기반 Active Learning 감성 분류 파이프라인도 구축했습니다. Lark Webhook 연동으로 스케줄 기반 뉴스 다이제스트 자동 발송 기능까지 지원합니다.',
+    description: 'MiniLM 임베딩 시맨틱 검색, Cerebras LLM 분석, Lark 알림을 결합한 AI 뉴스 플랫폼',
+    fullDescription: 'Express.js와 Next.js 14로 구축한 AI 기반 뉴스 검색·분석 플랫폼입니다. Google News RSS와 Naver News 스크래핑으로 다중 소스 뉴스를 수집하고, MiniLM 다국어 임베딩(384차원) 기반 코사인 유사도 시맨틱 검색으로 의미 중심 탐색을 제공합니다. 임베딩 모델은 Lazy Loading으로 필요 시에만 로딩하며, 기사 임베딩 캐싱으로 재계산을 방지합니다. 유사도 임계값이 높을 때는 Cerebras LLM 리랭킹을 추가 적용하여 검색 정밀도를 높이고, 리랭킹 실패 시에도 MiniLM 결과로 폴백합니다. Cerebras Llama 3.1-8b LLM을 통해 뉴스 핵심 요약, 감성 분석, 트렌드 인사이트를 생성하며, Xenova Transformers 다국어 임베딩과 로지스틱 회귀 기반 Active Learning 감성 분류 파이프라인도 구축했습니다. Lark Webhook 연동으로 스케줄 기반 뉴스 다이제스트 자동 발송 기능까지 지원합니다.',
     image: '/newsCrawler/newsCrawler.png',
     tags: ['Next.js', 'TypeScript', 'Express.js', 'Node.js', 'Cerebras LLM', 'Lark', 'AI/ML'],
     category: ['Next.js', 'Node.js'],
     period: '2026.02 ~ 현재',
     role: '풀스택 개발자',
     features: [
-      '듀얼 검색 시스템 - 키워드 검색과 TF-IDF 코사인 유사도 기반 시맨틱 검색, 유사도 임계값 슬라이더로 검색 정밀도 조절',
+      '듀얼 검색 시스템 - 키워드 검색과 MiniLM 임베딩 코사인 유사도 기반 시맨틱 검색, 유사도 임계값 슬라이더로 검색 정밀도 조절, 높은 임계값 시 LLM 리랭킹 자동 적용',
       'AI 뉴스 분석 - Cerebras LLM 기반 핵심 요약, 주요 포인트, 감성 분석(-1~+1 스코어), 트렌드 분석 제공',
       '감성 분류 파이프라인 - LLM·HuggingFace 자동 라벨링, 수동 라벨링, Active Learning 기반 모델 자동 재학습',
       'Lark 연동 - Webhook 기반 뉴스 다이제스트 자동 발송, Cron 스케줄링, 감성 필터링, 수동 전송 지원',
@@ -280,7 +280,7 @@ export const projects = [
     points: [
       'Express.js와 Next.js 14 App Router를 활용한 풀스택 아키텍처 구축 및 TypeScript 타입 안전성 확보',
       'Google News RSS 파싱과 Naver News Cheerio 스크래핑을 Promise.allSettled로 병렬 수집하고, Bigram Jaccard 유사도 기반 중복 제거 파이프라인 구현',
-      'TF-IDF 벡터화와 코사인 유사도 기반 시맨틱 검색 엔진을 직접 구현하여 한국어·영어 혼합 토큰 처리',
+      'Xenova/paraphrase-multilingual-MiniLM-L12-v2 임베딩(384차원)과 코사인 유사도 기반 시맨틱 검색 엔진 구현, Lazy Loading·동시 로딩 방지·임베딩 캐싱으로 효율적 모델 운용',
       'Cerebras Llama 3.1-8b LLM을 활용한 뉴스 종합 분석(요약, 감성, 트렌드, 핵심 포인트) 및 배치 감성 분류(10건/호출)',
       'Xenova paraphrase-multilingual-MiniLM-L12-v2 임베딩(384차원)과 로지스틱 회귀 분류기를 결합한 Active Learning 감성 분석 파이프라인 구축',
       'Lark Webhook 연동으로 Cron 스케줄 기반 뉴스 다이제스트 자동 발송, 감성 필터링 및 인터랙티브 카드 포맷 지원',
