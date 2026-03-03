@@ -194,14 +194,15 @@ export const projects = [
   {
     id: 7,
     title: '오리(오빠의 리뷰)',
-    description: '다양한 분야의 후기를 공유하고 탐색할 수 있는 커뮤니티 플랫폼',
-    fullDescription: 'Next.js와 Node.js 기반으로 개발된 리뷰 통합 커뮤니티 플랫폼입니다. 대학, 교회, 회사, 외주 등 다양한 카테고리별 후기를 작성하고 공유할 수 있으며, TypeScript와 Tailwind CSS를 활용한 모던한 UI/UX를 제공합니다. Sequelize ORM을 통한 효율적인 데이터베이스 관리와 실시간 검색 자동완성 기능으로 사용자 경험을 개선했습니다.',
+    description: '템플릿 기반으로 리뷰 사이트와 API를 자동 생성하는 커뮤니티 플랫폼',
+    fullDescription: 'Next.js와 Node.js 기반으로 개발된 리뷰 통합 커뮤니티 플랫폼입니다. 어드민에서 템플릿을 선택하면 맞춤형 리뷰 사이트와 API가 자동으로 생성되어, 별도의 개발 없이도 새로운 리뷰 서비스를 즉시 배포할 수 있습니다. 대학, 교회, 회사, 외주 등 다양한 카테고리별 후기를 작성하고 공유할 수 있으며, TypeScript와 Tailwind CSS를 활용한 모던한 UI/UX를 제공합니다. Sequelize ORM을 통한 효율적인 데이터베이스 관리와 실시간 검색 자동완성 기능으로 사용자 경험을 개선했습니다.',
     image: '/ori/ori.png',
     tags: ['Next.js', 'Node.js', 'Express', 'TypeScript', 'Sequelize', 'Tailwind CSS'],
     category: ['Next.js', ", " , 'Node.js'],
     period: '2025.01 ~ 현재',
     role: '풀스택 개발자',
     features: [
+      '템플릿 기반 사이트 자동 생성 - 어드민에서 템플릿을 선택하면 리뷰 사이트와 API가 자동으로 구축되는 노코드 빌더',
       '카테고리별 후기 시스템 - 대학, 교회, 회사, 외주 등 다양한 분야의 리뷰를 체계적으로 분류',
       '실시간 검색 자동완성 - 사용자 입력에 따른 즉각적인 검색어 추천 기능',
       '베스트 후기 시스템 - 평점 기반 우수 리뷰 선별 및 노출',
@@ -209,6 +210,7 @@ export const projects = [
     ],
     points: [
       'Next.js와 TypeScript를 활용한 타입 안전성이 보장된 프론트엔드 개발 및 Tailwind CSS로 반응형 UI 구현',
+      '어드민 템플릿 시스템 설계로 별도 개발 없이 리뷰 사이트와 API를 자동 생성하는 구조 구현',
       'Node.js와 Express 기반 RESTful API 서버 구축 및 Sequelize ORM을 통한 효율적인 데이터베이스 관리',
       '검색 자동완성 기능 개발로 사용자가 원하는 정보를 빠르게 찾을 수 있도록 UX 개선',
       '카테고리별 리뷰 시스템 구축으로 사용자가 관심 분야의 후기를 효율적으로 탐색할 수 있는 구조 설계',
