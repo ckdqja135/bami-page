@@ -193,7 +193,7 @@ export const projects = [
   },
   {
     id: 7,
-    title: '오늘의 리뷰 (오리)',
+    title: '오리(오빠의 리뷰)',
     description: '다양한 분야의 후기를 공유하고 탐색할 수 있는 커뮤니티 플랫폼',
     fullDescription: 'Next.js와 Node.js 기반으로 개발된 리뷰 통합 커뮤니티 플랫폼입니다. 대학, 교회, 회사, 외주 등 다양한 카테고리별 후기를 작성하고 공유할 수 있으며, TypeScript와 Tailwind CSS를 활용한 모던한 UI/UX를 제공합니다. Sequelize ORM을 통한 효율적인 데이터베이스 관리와 실시간 검색 자동완성 기능으로 사용자 경험을 개선했습니다.',
     image: '/ori/ori.png',
