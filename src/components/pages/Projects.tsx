@@ -337,7 +337,7 @@ export const projects = [
     fullDescription: 'NestJS 모듈 아키텍처와 TypeScript로 설계한 멀티채널 이커머스 통합 어드민 백엔드입니다. Shopby(샵바이), Naver Commerce(네이버 커머스), Kiosk(오프라인 키오스크) 3개 판매 채널의 매출·정산·주문·고객 데이터를 37개 REST API 컨트롤러와 35개 Prisma DB 모델로 구조화하여 단일 대시보드에서 실시간 조회·비교·분석할 수 있도록 구축했습니다. Naver Commerce OAuth 2.0 토큰 선제 갱신, IFDO 웹 트래픽 분석(페이지뷰·구매전환율·검색엔진 유입·캠페인 성과) 연동, FIFO 잡 큐 기반 Cron 스케줄러를 통한 일일 자동 데이터 동기화, Winston 로그 로테이션·압축·자동 삭제 파이프라인 등 운영 안정성과 확장성을 고려한 프로덕션 레벨의 이커머스 관리 시스템입니다.',
     image: '',
     tags: ['NestJS', 'TypeScript', 'Prisma', 'MySQL', 'AWS S3', 'Swagger'],
-    category: ['TypeScript', 'Node.js'],
+    category: ['NestJS'],
     period: '2026.01 ~ 2026.03',
     role: '백엔드 개발자',
     features: [
