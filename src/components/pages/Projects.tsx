@@ -330,6 +330,34 @@ export const projects = [
       '/cinema/cinema2.png',
     ]
   },
+  {
+    id: 11,
+    title: '자사몰 어드민 백엔드',
+    description: 'Shopby·Naver·Kiosk 3개 판매 채널의 매출·정산·트래픽을 하나의 대시보드로 통합 관리하는 NestJS 기반 이커머스 어드민 API 서버',
+    fullDescription: 'NestJS 모듈 아키텍처와 TypeScript로 설계한 멀티채널 이커머스 통합 어드민 백엔드입니다. Shopby(샵바이), Naver Commerce(네이버 커머스), Kiosk(오프라인 키오스크) 3개 판매 채널의 매출·정산·주문·고객 데이터를 37개 REST API 컨트롤러와 35개 Prisma DB 모델로 구조화하여 단일 대시보드에서 실시간 조회·비교·분석할 수 있도록 구축했습니다. Naver Commerce OAuth 2.0 토큰 선제 갱신, IFDO 웹 트래픽 분석(페이지뷰·구매전환율·검색엔진 유입·캠페인 성과) 연동, FIFO 잡 큐 기반 Cron 스케줄러를 통한 일일 자동 데이터 동기화, Winston 로그 로테이션·압축·자동 삭제 파이프라인 등 운영 안정성과 확장성을 고려한 프로덕션 레벨의 이커머스 관리 시스템입니다.',
+    image: '',
+    tags: ['NestJS', 'TypeScript', 'Prisma', 'MySQL', 'AWS S3', 'Swagger'],
+    category: ['TypeScript', 'Node.js'],
+    period: '2026.01 ~ 2026.03',
+    role: '백엔드 개발자',
+    features: [
+      '멀티채널 통합 대시보드 - Shopby·Naver·Kiosk 3개 채널의 일마감·금일 매출·주간 추이·월간 KPI와 IFDO 웹 트래픽(페이지뷰·구매전환율·검색엔진 유입·캠페인 성과) 통계를 하나의 대시보드에서 통합 조회',
+      'JWT 인증 및 RBAC - Passport.js 기반 JWT 인증, bcrypt 솔트 해싱, 역할 기반 접근 제어로 어드민 계정 보안 체계 구축',
+      '정산 관리 시스템 - Shopby·Naver 채널별 건별/일별 정산 조회, 파트너사 정산 리포트 생성, 채널 믹스 분석 및 월간 KPI 보고서 자동 산출',
+      'Cron 기반 자동 동기화 - FIFO 잡 큐로 동시 실행 충돌을 방지하며, 일일 매출·키오스크 구매·로그 정리 등 3종 스케줄 작업을 무중단 운영',
+      '마이핑 상품·카테고리 관리 - 상품 유형 규칙, 카테고리 상태 추적, 제외 규칙(조합 방지) 등 내부 상품 관리 노코드 설정 시스템 구현',
+    ],
+    points: [
+      'NestJS 모듈 아키텍처를 활용하여 채널별(Shopby·Naver·Kiosk) 독립 모듈로 설계하고, 통합 대시보드에서 Promise.all 병렬 호출로 3개 채널 데이터를 동시 집계하여 API 응답 성능을 최적화',
+      'Naver Commerce OAuth 2.0 토큰 관리 시 만료 5분 전 선제적 갱신 로직과 토큰 캐싱을 구현하여 외부 API 호출 실패율을 최소화하고 안정적인 데이터 수집 보장',
+      'Prisma ORM 기반 35개 DB 모델(매출·정산·고객·트래픽·상품·스케줄러 로그 등)을 설계하고, BigInt 직렬화 커스텀 처리 및 Prisma 에러 핸들링 유틸리티를 구현하여 타입 안전한 데이터 접근 계층 구축',
+      'FIFO 잡 큐 기반 스케줄러 시스템을 설계하여 Cron 작업 간 동시 실행 충돌을 원천 방지하고, 일일 매출 동기화·키오스크 구매 수집·로그 클린업 3종 배치 작업을 안정적으로 운영',
+      'Winston 일별 로그 로테이션(파일당 100MB, 7일 후 자동 압축, 60일 후 자동 삭제)과 환경별 로그 레벨 분리를 적용하여 개발·운영 환경 모두에서 효과적인 모니터링 체계 확보',
+      'Global ValidationPipe(whitelist + forbidNonWhitelisted)와 Joi 환경변수 스키마 검증, CORS 멀티 환경 설정을 적용하여 요청 유효성 검사 및 배포 환경별 보안 설정을 체계화',
+      'Shopby Webhook 기반 실시간 주문 데이터 캡처, 상품 리뷰 연동, 회원 데이터 동기화 파이프라인을 구축하여 채널 간 데이터 일관성 유지',
+    ],
+    screenshots: []
+  },
 ];
 
 const allTags = ['전체', 'Go', 'Java', 'JavaScript', 'Next.js', 'Node.js', 'Python', 'TypeScript'];
@@ -438,11 +466,22 @@ export function Projects() {
                 onClick={() => setSelectedProject(project)}
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
-                  <ImageWithFallback
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
+                  {project.image ? (
+                    <ImageWithFallback
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-primary/20 via-primary/10 to-background flex flex-col items-center justify-center gap-3 transition-transform duration-500 group-hover:scale-110">
+                      <div className="text-4xl font-bold text-primary/40">{project.title.charAt(0)}</div>
+                      <div className="flex flex-wrap justify-center gap-1.5 px-4">
+                        {project.tags.slice(0, 4).map((tag) => (
+                          <span key={tag} className="text-[11px] px-2 py-0.5 rounded-full bg-primary/10 text-primary/60">{tag}</span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-8">
                     <span className="text-white flex items-center gap-2">
                       자세히 보기 <ExternalLink className="h-4 w-4" />
@@ -510,15 +549,17 @@ export function Projects() {
                 </DialogTitle>
               </DialogHeader>
               {/* Main Image Slider */}
-              <ProjectImageSlider
-                images={(selectedProject.screenshots?.length
-                  ? selectedProject.screenshots
-                  : [selectedProject.image]
-                ).map((src, i) => ({
-                  src,
-                  alt: `${selectedProject.title} ${i + 1}`,
-                }))}
-              />
+              {(selectedProject.screenshots?.length || selectedProject.image) && (
+                <ProjectImageSlider
+                  images={(selectedProject.screenshots?.length
+                    ? selectedProject.screenshots
+                    : [selectedProject.image]
+                  ).map((src, i) => ({
+                    src,
+                    alt: `${selectedProject.title} ${i + 1}`,
+                  }))}
+                />
+              )}
 
               {/* Project Info */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
