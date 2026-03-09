@@ -106,7 +106,7 @@ export function Home() {
             <p className="text-lg text-muted-foreground leading-relaxed tracking-tight">
             7년 이상 웹 서비스를 개발하며 백엔드를 중심으로 프론트엔드까지 폭넓게 경험해왔습니다.
             <br /><br />
-            Go, Java, JavaScript, TypeScript 기반으로 API 설계·구현, 인증/권한, 파일 업로드, 실시간 데이터 처리 등 제품의 핵심 기능을 구현해왔고, 운영 환경에서 안정적으로 동작하도록 성능과 신뢰성을 지속적으로 개선해왔습니다.
+            Go, Java, JavaScript, TypeScript 기반으로 멀티채널 데이터 집계·통계 분석, 실시간 시세 처리, 에너지 데이터 집계 엔진, 스케줄러 자동화 등 제품의 핵심 기능을 설계·구현해왔고, 운영 환경에서 안정적으로 동작하도록 성능과 신뢰성을 지속적으로 개선해왔습니다.
             <br /><br />
             또한 기획·디자인·퍼블리셔와의 협업 경험을 바탕으로 사용자 요구를 빠르게 반영하고, 반복 작업은 자동화/도구화를 통해 개발 효율을 높입니다.
             <br /><br />
