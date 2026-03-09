@@ -54,7 +54,7 @@ const timeline = [
 ];
 
 const stats = [
-  { icon: Briefcase, label: '완료한 프로젝트', value: '6+', color: 'text-primary' },
+  { icon: Briefcase, label: '완료한 프로젝트', value: '9+', color: 'text-primary' },
   { icon: Trophy, label: '수상 경력', value: '2회', color: 'text-accent' },
   { icon: Users, label: '근무 회사', value: '4곳', color: 'text-accent' },
 ];
