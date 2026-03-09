@@ -133,7 +133,7 @@ export const projects = [
     fullDescription: 'Node.js를 사용하여 프론트엔드와 백엔드를 모두 구현한 기업 홈페이지입니다. 채용 공고 관리 시스템, 이력서 지원 기능, 파일 업로드 시스템을 구축했으며, Google reCAPTCHA v3를 적용하여 악성 트래픽을 차단하고 보안을 강화했습니다. 채용 프로세스 개선으로 사내 지원율을 약 20% 증가시켰습니다.',
     image: '/softwiz/softwiz.png',
     tags: ['Node.js', 'MySQL', 'reCAPTCHA', 'Express'],
-    category: 'Node.js',
+    category: ['Node.js',", ", "JavaScript"],
     period: '2020.04 ~ 2023.09',
     role: '풀스택 개발자',
     features: [
