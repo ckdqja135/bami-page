@@ -18,13 +18,16 @@ const generateSkillsData = () => {
       // 제외 목록에 있는 스킬은 건너뛰기
       if (excludedSkills.includes(tag)) return;
 
-      // MySQL과 MariaDB를 하나로 통합
+      // 유사 기술을 하나로 통합
       let normalizedTag = tag;
-      if (tag === 'MySQL' || tag === 'MariaDB') {
+      if (tag === 'MySQL' || tag === 'MariaDB' || tag === 'Prisma') {
         normalizedTag = 'MySQL · MariaDB';
       }
-      if (tag === 'Java') {
+      if (tag === 'Java' || tag === 'Spring Boot') {
         normalizedTag = 'Java · Spring';
+      }
+      if (tag === 'TypeScript' || tag === 'NestJS' || tag === 'Node.js') {
+        normalizedTag = 'TypeScript · Node.js';
       }
 
       if (!skillMap.has(normalizedTag)) {
@@ -68,8 +71,7 @@ const getLevel = (value: number): string => {
 
 // 실제 경력 매핑 (수동 설정)
 const actualExperience: Record<string, string> = {
-  'Node.js': '6년',
-  'TypeScript': '6년',
+  'TypeScript · Node.js': '6년',
   'MySQL · MariaDB': '6년',
   'Java · Spring': '1년',
   'JavaScript': '5년',
@@ -84,8 +86,7 @@ const actualExperience: Record<string, string> = {
 
 // 실제 숙련도 매핑 (수동 설정 - 자동 계산 값을 오버라이드)
 const actualProficiency: Record<string, number> = {
-  'TypeScript': 85,
-  'Node.js': 85,
+  'TypeScript · Node.js': 85,
   'MySQL · MariaDB': 80,
   'Next.js': 45,
   'Java · Spring': 45,
@@ -112,9 +113,8 @@ const getExperience = (skill: string, projectCount: number): string => {
 
 // 기술 설명 매핑
 const skillDescriptions: Record<string, string> = {
-  'TypeScript': '타입 안전성을 기반으로 확장 가능한 웹 애플리케이션 개발',
+  'TypeScript · Node.js': 'TypeScript 기반 타입 안전한 백엔드 API 서버 구축 및 실시간 데이터 처리 시스템 개발',
   'Next.js': 'SSR/SSG 최적화와 SEO를 고려한 모던 웹 애플리케이션 구축',
-  'Node.js': 'RESTful API 서버 구축 및 실시간 데이터 처리 시스템 개발',
   'Express': 'Node.js 기반 백엔드 API 서버 및 미들웨어 구현',
   'Java · Spring': 'Spring 프레임워크 기반 백엔드 API 개발 및 데이터 처리',
   'JavaScript': '인터랙티브한 UI/UX 구현 및 웹 애플리케이션 개발',
