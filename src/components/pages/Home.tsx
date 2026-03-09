@@ -104,7 +104,7 @@ export function Home() {
           >
             <h2 className="text-3xl md:text-4xl mb-6 tracking-tight">소개</h2>
             <p className="text-lg text-muted-foreground leading-relaxed tracking-tight">
-            6년 이상 웹 서비스를 개발하며 백엔드를 중심으로 프론트엔드까지 폭넓게 경험해왔습니다.
+            7년 이상 웹 서비스를 개발하며 백엔드를 중심으로 프론트엔드까지 폭넓게 경험해왔습니다.
             <br /><br />
             Go, Java, JavaScript, TypeScript 기반으로 API 설계·구현, 인증/권한, 파일 업로드, 실시간 데이터 처리 등 제품의 핵심 기능을 구현해왔고, 운영 환경에서 안정적으로 동작하도록 성능과 신뢰성을 지속적으로 개선해왔습니다.
             <br /><br />
