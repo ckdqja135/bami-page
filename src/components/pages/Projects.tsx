@@ -338,7 +338,7 @@ export const projects = [
     image: '',
     tags: ['NestJS', 'TypeScript', 'Prisma', 'MySQL', 'AWS S3', 'Swagger'],
     category: ['NestJS'],
-    period: '2026.01 ~ 2026.03',
+    period: '2026.02 ~ 현재 진행중',
     role: '백엔드 개발자',
     features: [
       '멀티채널 통합 대시보드 - Shopby·Naver·Kiosk 3개 채널의 일마감·금일 매출·주간 추이·월간 KPI와 IFDO 웹 트래픽(페이지뷰·구매전환율·검색엔진 유입·캠페인 성과) 통계를 하나의 대시보드에서 통합 조회',
