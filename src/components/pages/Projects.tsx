@@ -744,21 +744,23 @@ export function Projects() {
             </button>
 
             {/* 이미지 / 비디오 */}
-            {isVideo(mediaSrc) ? (
-              <video
-                src={mediaSrc}
-                controls
-                autoPlay
-                playsInline
-                className="max-w-[calc(95vw-120px)] md:max-w-[calc(95vw-160px)] max-h-[75vh] object-contain rounded-lg"
-              />
-            ) : (
-              <img
-                src={mediaSrc}
-                alt={`${selectedProject.title} 스크린샷 ${selectedMedia + 1}`}
-                className="max-w-[calc(95vw-120px)] md:max-w-[calc(95vw-160px)] max-h-[75vh] object-contain rounded-lg"
-              />
-            )}
+            <div className="w-[calc(95vw-120px)] md:w-[calc(95vw-160px)] h-[75vh] flex items-center justify-center overflow-hidden rounded-lg bg-black/30">
+              {isVideo(mediaSrc) ? (
+                <video
+                  src={mediaSrc}
+                  controls
+                  autoPlay
+                  playsInline
+                  className="w-full h-full object-contain rounded-lg"
+                />
+              ) : (
+                <img
+                  src={mediaSrc}
+                  alt={`${selectedProject.title} 스크린샷 ${selectedMedia + 1}`}
+                  className="w-full h-full object-contain rounded-lg"
+                />
+              )}
+            </div>
 
             {/* 다음 버튼 */}
             <button

@@ -95,12 +95,12 @@ export function ProjectImageSlider({
               key={i}
               className="relative w-full flex-shrink-0"
             >
-              {/* 미디어 래퍼: 중앙정렬 + 유동높이 */}
-              <div className="flex items-center justify-center bg-black/70 rounded-lg">
+              {/* 미디어 래퍼: 고정 높이 + object-contain으로 비율 유지 */}
+              <div className="flex items-center justify-center bg-black/70 rounded-lg h-[60vh] w-full overflow-hidden">
                 {video ? (
                   <video
                     src={img.src}
-                    className="block max-w-full max-h-[70vh] w-auto h-auto rounded-lg"
+                    className="w-full h-full object-contain rounded-lg"
                     controls
                     playsInline
                     // autoPlay muted loop  // 원하면 활성화
@@ -109,7 +109,7 @@ export function ProjectImageSlider({
                   <img
                     src={img.src}
                     alt={img.alt ?? `slide ${i + 1}`}
-                    className="block max-w-full max-h-[70vh] w-auto h-auto rounded-lg"
+                    className="w-full h-full object-contain rounded-lg"
                     draggable={false}
                   />
                 )}
