@@ -333,14 +333,15 @@ export const projects = [
   {
     id: 11,
     title: '자사몰 통합 어드민',
-    description: 'Shopby·Naver·Kiosk 3개 판매 채널의 매출·정산·트래픽을 하나의 대시보드로 통합 관리하는 NestJS 기반 이커머스 어드민 API 서버',
-    fullDescription: 'NestJS 모듈 아키텍처와 TypeScript로 설계한 멀티채널 이커머스 통합 어드민 입니다. Shopby(샵바이), Naver Commerce(네이버 커머스), Kiosk(오프라인 키오스크) 3개 판매 채널의 매출·정산·주문·고객 데이터를 37개 REST API 컨트롤러와 35개 Prisma DB 모델로 구조화하여 단일 대시보드에서 실시간 조회·비교·분석할 수 있도록 구축했습니다. Naver Commerce OAuth 2.0 토큰 선제 갱신, IFDO 웹 트래픽 분석(페이지뷰·구매전환율·검색엔진 유입·캠페인 성과) 연동, FIFO 잡 큐 기반 Cron 스케줄러를 통한 일일 자동 데이터 동기화, Winston 로그 로테이션·압축·자동 삭제 파이프라인 등 운영 안정성과 확장성을 고려한 프로덕션 레벨의 이커머스 관리 시스템입니다.',
+    description: 'Shopby·Naver·Kiosk 3개 판매 채널의 매출·정산·트래픽을 하나의 대시보드로 통합 관리하는 React + NestJS 풀스택 이커머스 어드민',
+    fullDescription: 'React 기반 SPA 대시보드와 NestJS 모듈 아키텍처로 설계한 풀스택 멀티채널 이커머스 통합 어드민입니다. Shopby(샵바이), Naver Commerce(네이버 커머스), Kiosk(오프라인 키오스크) 3개 판매 채널의 매출·정산·주문·고객 데이터를 37개 REST API 컨트롤러와 35개 Prisma DB 모델로 구조화하여 단일 대시보드에서 실시간 조회·비교·분석할 수 있도록 구축했습니다. React 컴포넌트 기반 어드민 화면에서 채널별 매출 추이·정산 현황·트래픽 지표를 시각적으로 조회할 수 있으며, Naver Commerce OAuth 2.0 토큰 선제 갱신, IFDO 웹 트래픽 분석(페이지뷰·구매전환율·검색엔진 유입·캠페인 성과) 연동, FIFO 잡 큐 기반 Cron 스케줄러를 통한 일일 자동 데이터 동기화, Winston 로그 로테이션·압축·자동 삭제 파이프라인 등 운영 안정성과 확장성을 고려한 프로덕션 레벨의 이커머스 관리 시스템입니다.',
     image: '',
-    tags: ['NestJS', 'TypeScript', 'Prisma', 'MySQL', 'AWS S3', 'Swagger'],
+    tags: ['React', 'NestJS', 'TypeScript', 'Prisma', 'MySQL', 'AWS S3', 'Swagger'],
     category: ['NestJS'],
     period: '2026.02 ~ 현재 진행중',
     role: '풀스택 개발자',
     features: [
+      'React 기반 어드민 대시보드 UI - 채널별 매출 추이·정산 현황·트래픽 지표를 시각화한 컴포넌트 기반 SPA 화면 구성 및 NestJS REST API 연동',
       '멀티채널 통합 대시보드 - Shopby·Naver·Kiosk 3개 채널의 일마감·금일 매출·주간 추이·월간 KPI와 IFDO 웹 트래픽(페이지뷰·구매전환율·검색엔진 유입·캠페인 성과) 통계를 하나의 대시보드에서 통합 조회',
       'JWT 인증 및 RBAC - Passport.js 기반 JWT 인증, bcrypt 솔트 해싱, 역할 기반 접근 제어로 어드민 계정 보안 체계 구축',
       '정산 관리 시스템 - Shopby·Naver 채널별 건별/일별 정산 조회, 파트너사 정산 리포트 생성, 채널 믹스 분석 및 월간 KPI 보고서 자동 산출',
@@ -348,6 +349,7 @@ export const projects = [
       '마이핑 상품·카테고리 관리 - 상품 유형 규칙, 카테고리 상태 추적, 제외 규칙(조합 방지) 등 내부 상품 관리 노코드 설정 시스템 구현',
     ],
     points: [
+      'React SPA로 어드민 대시보드 전체 화면을 구성하고, NestJS REST API와 연동하여 3개 채널 데이터를 실시간 조회·시각화하는 풀스택 아키텍처 설계',
       'NestJS 모듈 아키텍처를 활용하여 채널별(Shopby·Naver·Kiosk) 독립 모듈로 설계하고, 통합 대시보드에서 Promise.all 병렬 호출로 3개 채널 데이터를 동시 집계하여 API 응답 성능을 최적화',
       'Naver Commerce OAuth 2.0 토큰 관리 시 만료 5분 전 선제적 갱신 로직과 토큰 캐싱을 구현하여 외부 API 호출 실패율을 최소화하고 안정적인 데이터 수집 보장',
       'Prisma ORM 기반 35개 DB 모델(매출·정산·고객·트래픽·상품·스케줄러 로그 등)을 설계하고, BigInt 직렬화 커스텀 처리 및 Prisma 에러 핸들링 유틸리티를 구현하여 타입 안전한 데이터 접근 계층 구축',
