@@ -217,7 +217,7 @@ export const projects = [
       '베스트 후기 알고리즘 구현 및 자유게시판을 통한 커뮤니티 활성화로 사용자 참여 증진',
       'Vercel을 통한 프론트엔드 배포 및 백엔드 API 서버 운영으로 안정적인 서비스 제공',
     ],
-    demoUrl: 'https://www.reviewhub.life/',
+    demoUrl: 'https://www.ori.blue/',
     screenshots: [
       '/ori/ori.png',
       '/ori/ori2.png',
@@ -263,7 +263,7 @@ export const projects = [
   },
   {
     id: 9,
-    title: 'AI 뉴스 서치',
+    title: 'AI 뉴스봇',
     description: 'MiniLM 임베딩 시맨틱 검색, Cerebras LLM 분석, Lark 알림을 결합한 AI 뉴스 플랫폼',
     fullDescription: 'Express.js와 Next.js 14로 구축한 AI 기반 뉴스 검색·분석 플랫폼입니다. Google News RSS와 Naver News 스크래핑으로 다중 소스 뉴스를 수집하고, MiniLM 다국어 임베딩(384차원) 기반 코사인 유사도 시맨틱 검색으로 의미 중심 탐색을 제공합니다. 임베딩 모델은 Lazy Loading으로 필요 시에만 로딩하며, 기사 임베딩 캐싱으로 재계산을 방지합니다. 유사도 임계값이 높을 때는 Cerebras LLM 리랭킹을 추가 적용하여 검색 정밀도를 높이고, 리랭킹 실패 시에도 MiniLM 결과로 폴백합니다. Cerebras Llama 3.1-8b LLM을 통해 뉴스 핵심 요약, 감성 분석, 트렌드 인사이트를 생성하며, Xenova Transformers 다국어 임베딩과 로지스틱 회귀 기반 Active Learning 감성 분류 파이프라인도 구축했습니다. Lark Webhook 연동으로 스케줄 기반 뉴스 다이제스트 자동 발송 기능까지 지원합니다.',
     image: '/newsCrawler/newsCrawler.png',
