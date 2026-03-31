@@ -75,7 +75,7 @@ export function ProjectImageSlider({
 
   return (
     <div
-      className="relative z-0 w-full overflow-hidden rounded-lg mb-6 select-none"
+      className="relative z-0 w-full overflow-hidden rounded-lg mb-3 select-none"
       role="region"
       aria-roledescription="carousel"
       aria-label="project media"
@@ -96,7 +96,7 @@ export function ProjectImageSlider({
               className="relative w-full flex-shrink-0"
             >
               {/* 미디어 래퍼: 고정 높이 + object-contain으로 비율 유지 */}
-              <div className="flex items-center justify-center bg-black/70 rounded-lg h-[60vh] w-full overflow-hidden">
+              <div className="flex items-center justify-center bg-black/70 rounded-lg w-full overflow-hidden aspect-video">
                 {video ? (
                   <video
                     src={img.src}

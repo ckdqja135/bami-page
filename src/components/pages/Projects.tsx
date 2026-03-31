@@ -332,14 +332,14 @@ export const projects = [
   },
   {
     id: 11,
-    title: '자사몰 어드민 백엔드',
+    title: '자사몰 통합 어드민',
     description: 'Shopby·Naver·Kiosk 3개 판매 채널의 매출·정산·트래픽을 하나의 대시보드로 통합 관리하는 NestJS 기반 이커머스 어드민 API 서버',
-    fullDescription: 'NestJS 모듈 아키텍처와 TypeScript로 설계한 멀티채널 이커머스 통합 어드민 백엔드입니다. Shopby(샵바이), Naver Commerce(네이버 커머스), Kiosk(오프라인 키오스크) 3개 판매 채널의 매출·정산·주문·고객 데이터를 37개 REST API 컨트롤러와 35개 Prisma DB 모델로 구조화하여 단일 대시보드에서 실시간 조회·비교·분석할 수 있도록 구축했습니다. Naver Commerce OAuth 2.0 토큰 선제 갱신, IFDO 웹 트래픽 분석(페이지뷰·구매전환율·검색엔진 유입·캠페인 성과) 연동, FIFO 잡 큐 기반 Cron 스케줄러를 통한 일일 자동 데이터 동기화, Winston 로그 로테이션·압축·자동 삭제 파이프라인 등 운영 안정성과 확장성을 고려한 프로덕션 레벨의 이커머스 관리 시스템입니다.',
+    fullDescription: 'NestJS 모듈 아키텍처와 TypeScript로 설계한 멀티채널 이커머스 통합 어드민 입니다. Shopby(샵바이), Naver Commerce(네이버 커머스), Kiosk(오프라인 키오스크) 3개 판매 채널의 매출·정산·주문·고객 데이터를 37개 REST API 컨트롤러와 35개 Prisma DB 모델로 구조화하여 단일 대시보드에서 실시간 조회·비교·분석할 수 있도록 구축했습니다. Naver Commerce OAuth 2.0 토큰 선제 갱신, IFDO 웹 트래픽 분석(페이지뷰·구매전환율·검색엔진 유입·캠페인 성과) 연동, FIFO 잡 큐 기반 Cron 스케줄러를 통한 일일 자동 데이터 동기화, Winston 로그 로테이션·압축·자동 삭제 파이프라인 등 운영 안정성과 확장성을 고려한 프로덕션 레벨의 이커머스 관리 시스템입니다.',
     image: '',
     tags: ['NestJS', 'TypeScript', 'Prisma', 'MySQL', 'AWS S3', 'Swagger'],
     category: ['NestJS'],
     period: '2026.02 ~ 현재 진행중',
-    role: '백엔드 개발자',
+    role: '풀스택 개발자',
     features: [
       '멀티채널 통합 대시보드 - Shopby·Naver·Kiosk 3개 채널의 일마감·금일 매출·주간 추이·월간 KPI와 IFDO 웹 트래픽(페이지뷰·구매전환율·검색엔진 유입·캠페인 성과) 통계를 하나의 대시보드에서 통합 조회',
       'JWT 인증 및 RBAC - Passport.js 기반 JWT 인증, bcrypt 솔트 해싱, 역할 기반 접근 제어로 어드민 계정 보안 체계 구축',
@@ -562,7 +562,7 @@ export function Projects() {
               )}
 
               {/* Project Info */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-3">
                 <div className="flex items-center gap-3">
                   <Calendar className="h-5 w-5 text-primary" />
                   <div>
