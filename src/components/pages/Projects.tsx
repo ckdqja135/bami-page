@@ -259,6 +259,7 @@ export const projects = [
     demoUrl: 'https://salermoon.vercel.app/',
     screenshots: [
       '/salermoon/salermoon.png',
+      '/salermoon/salermoon2.png',
     ]
   },
   {
