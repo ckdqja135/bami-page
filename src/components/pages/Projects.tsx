@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 import { Card } from '../ui/card';
 import { Badge } from '../ui/badge';
 import { ImageWithFallback } from '../figma/ImageWithFallback';
-import { ExternalLink, Github, Calendar, User, CheckCircle2, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ExternalLink, Github, Calendar, User, CheckCircle2, X, ChevronLeft, ChevronRight, Image as ImageIcon } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '../ui/dialog';
 import { Button } from '../ui/button';
 import { Separator } from '../ui/separator';
@@ -77,7 +77,7 @@ export const projects = [
     title: '바이너리 거래 플랫폼 로그 서버',
     description: 'Go와 Kafka를 활용한 실시간 로그 수집 및 전송 시스템',
     fullDescription: 'Go 언어를 사용하여 개발한 고성능 로그 수집 서버입니다. HTTP API를 통해 로그를 수집하고 Kafka로 실시간 전송하여 데이터 분석 및 장애 대응 속도를 크게 향상시켰습니다. gorilla/mux 라우터와 Negroni 미들웨어를 활용하여 안정적이고 확장 가능한 구조로 설계했습니다.',
-    image: '/log-server/1.png',
+    image: '',
     tags: ['Go', 'Kafka', 'gorilla/mux', 'Negroni', 'Sarama'],
     category: 'Go',
     period: '2020.04 ~ 2023.09',
@@ -95,9 +95,7 @@ export const projects = [
       '로그 데이터의 실시간 수집과 전송을 통해 데이터 분석 및 장애 대응 속도를 크게 향상',
       '데이터 처리 지연 문제를 해결하고 안정적인 로그 수집 파이프라인 구축',
     ],
-    screenshots: [
-      '/log-server/1.png',
-    ]
+    screenshots: []
   },
   {
     id: 4,
@@ -265,10 +263,10 @@ export const projects = [
   {
     id: 9,
     title: 'AI 뉴스봇',
-    description: 'MiniLM 임베딩 시맨틱 검색, Cerebras LLM 분석, Lark 알림을 결합한 AI 뉴스 플랫폼',
-    fullDescription: 'Express.js와 Next.js 14로 구축한 AI 기반 뉴스 검색·분석 플랫폼입니다. Google News RSS, Naver News, Daum News 스크래핑으로 다중 소스 뉴스를 수집하고, BM25 키워드 스코링과 MiniLM 다국어 임베딩(384차원) 코사인 유사도를 RRF(Reciprocal Rank Fusion)로 결합한 하이브리드 검색을 제공합니다. 쿼리 토큰 수·의문문 여부로 keyword/conceptual/balanced 타입을 자동 분류하여 BM25/시맨틱 가중치를 동적 조절합니다. RAG 파이프라인으로 기사 URL 본문을 직접 fetch하고 @mozilla/readability로 보일러플레이트를 제거한 뒤, 문단/문장 기반 400자 청킹(80자 overlap) 후 쿼리 유사도 높은 청크를 Cerebras LLM 프롬프트에 컨텍스트로 주입합니다. cheerio로 테이블·이미지 정보를 추출해 본문에 append하며, 사용자 피드백을 RRF 점수 boost로 반영하는 피드백 루프도 구축했습니다. Cerebras Llama 3.1-8b LLM을 통해 뉴스 핵심 요약, 감성 분석, 트렌드 인사이트를 생성하며, Xenova Transformers 다국어 임베딩과 로지스틱 회귀 기반 Active Learning 감성 분류 파이프라인도 구축했습니다. Lark Webhook 연동으로 스케줄 기반 뉴스 다이제스트 자동 발송 기능까지 지원합니다.',
+    description: 'RAG 하이브리드 검색·Cerebras LLM 분석에 자체 파인튜닝 감성모델(KLUE/RoBERTa→ONNX)을 결합한 AI 뉴스 플랫폼',
+    fullDescription: 'Express.js와 Next.js 14로 구축한 AI 기반 뉴스 검색·분석 플랫폼입니다. Google News RSS, Naver News, Daum News 스크래핑으로 다중 소스 뉴스를 수집합니다.\n\nBM25 키워드 스코링과 MiniLM 다국어 임베딩(384차원) 코사인 유사도를 RRF(Reciprocal Rank Fusion)로 결합한 하이브리드 검색을 제공하며, 쿼리 토큰 수·의문문 여부로 keyword/conceptual/balanced 타입을 자동 분류해 BM25/시맨틱 가중치를 동적 조절합니다. RAG 파이프라인은 기사 URL 본문을 직접 fetch하고 @mozilla/readability로 보일러플레이트를 제거한 뒤, 문단/문장 기반 400자 청킹(80자 overlap) 후 쿼리 유사도 높은 청크를 Cerebras LLM 프롬프트에 컨텍스트로 주입합니다. cheerio로 테이블·이미지 정보를 추출해 본문을 보강하고, 사용자 피드백을 RRF 점수 boost로 반영하는 피드백 루프도 구축했습니다.\n\nCerebras Llama 3.1-8b LLM으로 뉴스 핵심 요약·감성 분석·트렌드 인사이트를 생성합니다. 특히 감성 분류는 외부 API에 의존하지 않고, LLM 자동 라벨링으로 축적한 6천여 건 데이터로 KLUE/RoBERTa를 직접 파인튜닝(PyTorch·HuggingFace)하고 ONNX로 변환해 백엔드에서 추론합니다. 오분류 교정을 재학습에 반영하는 "라벨링 → 학습 → 추론 → 교정 → 재학습" 자기개선 루프로, 데이터 구축부터 학습·배포·개선까지 ML 사이클 전체를 직접 운영합니다.\n\nLark Webhook 연동으로 스케줄 기반 뉴스 다이제스트 자동 발송 기능까지 지원합니다.',
     image: '/newsCrawler/newsCrawler.png',
-    tags: ['Next.js', 'TypeScript', 'Express.js', 'Node.js', 'Cerebras LLM', 'RAG', 'Lark', 'AI/ML'],
+    tags: ['Next.js', 'TypeScript', 'Express.js', 'Node.js', 'Cerebras LLM', 'RAG', 'Lark', 'AI/ML', 'Python', 'PyTorch', 'ONNX'],
     category: ['Next.js', 'Node.js'],
     period: '2026.02 ~ 현재',
     role: '풀스택 개발자',
@@ -276,10 +274,10 @@ export const projects = [
       '하이브리드 검색 시스템 - BM25 키워드 스코링과 MiniLM 임베딩 코사인 유사도를 RRF(k=60)로 결합, 쿼리 토큰 수·의문문 여부로 keyword/conceptual/balanced 타입 자동 분류하여 BM25/시맨틱 가중치(0.4~0.7) 동적 조절',
       'RAG 파이프라인 - 기사 URL 본문 직접 fetch, @mozilla/readability 보일러플레이트 제거, 문단/문장 기반 400자 청킹(80자 overlap) 후 쿼리 유사도 높은 청크를 LLM 컨텍스트로 주입, 청크 코사인 유사도 평균을 confidence_score로 응답에 포함',
       'AI 뉴스 분석 - Cerebras LLM 기반 핵심 요약, 주요 포인트, 감성 분석(-1~+1 스코어), 트렌드 분석 제공',
-      '감성 분류 파이프라인 - LLM·HuggingFace 자동 라벨링, 수동 라벨링, Active Learning 기반 모델 자동 재학습',
+      '내부 AI 모델 학습 - Python(PyTorch·HuggingFace Transformers)으로 KLUE/RoBERTa-base 3-class 감성 모델을 직접 파인튜닝, LLM 자동 라벨링 6천여 건에 oversampling·stratified split 적용, f1_macro 기준 best 체크포인트 선택 후 ONNX 변환해 백엔드 추론(모델 미배포 환경에서는 키워드 규칙으로 자동 대체)',
       'Lark 연동 - Webhook 기반 뉴스 다이제스트 자동 발송, Cron 스케줄링, 감성 필터링, 수동 전송 지원',
-      '데이터 정제 - URL 패턴 날짜 추출, 도메인 기반 출처 추론, fetch 실패 기사는 LLM으로 제목·URL 기반 2문장 요약 생성, cheerio 테이블 파싱·이미지 캡션 추출 후 본문 섹션으로 append',
-      '피드백 루프 - 좋아요/싫어요를 clamp(net × 0.05, -0.2, +0.3) boost로 변환해 해당 기사 청크의 RRF 점수에 가산',
+      '데이터 정제 - URL 패턴 날짜 추출, 도메인 기반 출처 추론, cheerio 테이블 파싱·이미지 캡션 추출 후 본문 섹션으로 append',
+      '피드백 루프 - 좋아요/싫어요 반응을 검색 랭킹 점수에 반영해 결과 자동 최적화',
       '다국적 언론사 관리 - 한국·미국·영국·통신사 등 50개 이상 언론사 카테고리별 포함/제외 필터링',
       '편의 기능 - 북마크, 검색 히스토리, 다크모드, 자동 검색 프리셋, 리스트/그리드 뷰 전환, 반응형 UI',
     ],
@@ -289,13 +287,14 @@ export const projects = [
       'Xenova/paraphrase-multilingual-MiniLM-L12-v2 임베딩(384차원)과 BM25 점수를 RRF(k=60)로 결합한 하이브리드 검색 구현, 쿼리 자동 분류(keyword/conceptual/balanced)로 BM25/시맨틱 가중치 동적 조절, Lazy Loading·캐싱으로 효율적 모델 운용',
       '@mozilla/readability 보일러플레이트 제거·정규식 정제 후 문단/문장 기반 400자 청킹(80자 overlap) RAG 파이프라인 구축, 쿼리 유사도 상위 청크를 LLM 컨텍스트로 주입하고 코사인 유사도 평균을 confidence_score로 산출',
       'cheerio로 기사 내 <table> 파싱(헤더 자동 추론) 및 figcaption·img[alt] 이미지 설명 추출, 광고·로고·소형 이미지 정규식 필터링 후 본문 섹션으로 append',
-      'extractDateFromUrl·inferSourceFromUrl로 결측 메타데이터 보정, fetch 실패 기사는 Cerebras LLM으로 제목·URL 기반 2문장 요약을 생성하는 폴백 처리',
+      'extractDateFromUrl·inferSourceFromUrl로 결측 메타데이터 보정',
       'Cerebras Llama 3.1-8b LLM을 활용한 뉴스 종합 분석(요약, 감성, 트렌드, 핵심 포인트) 및 배치 감성 분류(10건/호출)',
-      'Xenova paraphrase-multilingual-MiniLM-L12-v2 임베딩(384차원)과 로지스틱 회귀 분류기를 결합한 Active Learning 감성 분석 파이프라인 구축',
+      'ml/ 내부 학습 파이프라인 구축 - LLM 자동 라벨링으로 축적한 6천여 건 데이터로 KLUE/RoBERTa-base 3-class 감성 모델을 PyTorch·HuggingFace Trainer로 파인튜닝, 클래스 불균형 보정을 위한 oversampling과 stratified split 적용, f1_macro 기준 best 모델 선택(6 epoch)',
+      'optimum으로 파인튜닝 모델을 ONNX 변환하고 백엔드(@xenova/transformers)에서 추론, LLM 라벨링 → 학습 → 추론 → 오분류 교정 → 재학습으로 이어지는 자기개선 폐루프 구성',
       'Lark Webhook 연동으로 Cron 스케줄 기반 뉴스 다이제스트 자동 발송, 감성 필터링 및 인터랙티브 카드 포맷 지원',
       'MD5 해시 기반 다중 캐시(키워드·시맨틱·분석별 TTL 분리), Rate Limiting(분당 60회), 재시도 로직을 통한 안정적 서비스 운영',
       '자연어 스케줄 파서("매일 오전 9시" → Cron 변환), 시드 데이터 백그라운드 수집, 자동 재학습 트리거 등 자동화 시스템 구현',
-      'clamp(net좋아요 × 0.05, -0.2, +0.3) boost를 feedback.json에 영구 저장, 시맨틱 검색 RRF 점수에 반영하여 사용자 반응 기반 결과 자동 최적화',
+      '좋아요/싫어요 순증을 clamp(× 0.05, -0.2~+0.3) boost 점수로 변환·영구 저장하고, 시맨틱 검색 RRF 점수에 반영해 사용자 반응 기반 결과 자동 최적화',
     ],
     screenshots: [
       '/newsCrawler/newsCrawler.png',
@@ -341,30 +340,35 @@ export const projects = [
   {
     id: 11,
     title: '자사몰 통합 어드민',
-    description: 'Shopby·Naver·Kiosk 3개 판매 채널의 매출·정산·트래픽을 하나의 대시보드로 통합 관리하는 React + NestJS 풀스택 이커머스 어드민',
-    fullDescription: 'React 기반 SPA 대시보드와 NestJS 모듈 아키텍처로 설계한 풀스택 멀티채널 이커머스 통합 어드민입니다. Shopby(샵바이), Naver Commerce(네이버 커머스), Kiosk(오프라인 키오스크) 3개 판매 채널의 매출·정산·주문·고객 데이터를 37개 REST API 컨트롤러와 35개 Prisma DB 모델로 구조화하여 단일 대시보드에서 실시간 조회·비교·분석할 수 있도록 구축했습니다. React 컴포넌트 기반 어드민 화면에서 채널별 매출 추이·정산 현황·트래픽 지표를 시각적으로 조회할 수 있으며, Naver Commerce OAuth 2.0 토큰 선제 갱신, IFDO 웹 트래픽 분석(페이지뷰·구매전환율·검색엔진 유입·캠페인 성과) 연동, FIFO 잡 큐 기반 Cron 스케줄러를 통한 일일 자동 데이터 동기화, Winston 로그 로테이션·압축·자동 삭제 파이프라인 등 운영 안정성과 확장성을 고려한 프로덕션 레벨의 이커머스 관리 시스템입니다.',
+    description: 'REST API 188개·DB 테이블 72개 규모의 이커머스 통합 어드민을 1인 풀스택으로 개발·운영 — 샵바이·네이버·POS 등 외부 시스템 7종의 매출·정산·트래픽을 단일 대시보드로 통합',
+    fullDescription: 'NestJS와 Next.js 기반의 이커머스 통합 어드민 시스템을 기획·설계·개발·운영까지 전 과정 단독으로 수행한 프로젝트입니다.\n\n백엔드는 REST API 188개, DB 테이블 72개, 비즈니스 도메인 29개 규모로 설계·구현했으며, 프론트엔드는 어드민 화면 40여 개를 구축했습니다. 통상 여러 명의 개발자가 분담하는 규모의 시스템을 단독으로 개발·운영하며 서비스 전반의 구조와 비즈니스 로직을 일관되게 관리했습니다.\n\n샵바이 커머스, 네이버 스마트스토어, 키오스크, 오프라인 POS, IFDO 웹로그 분석, 인스타그램, 스냅핏 등 7개 외부 시스템과의 데이터 연동 구조를 설계하고 크론 기반 배치·동기화 파이프라인을 구축하여, 온라인과 오프라인 채널에 분산된 주문·상품·회원·매출 데이터를 하나의 어드민 시스템으로 통합했습니다. 또한 멤버십 회원 등급 관리, 쿠폰 발급, 친구추천·적립, 지표 분석 등 샵바이 자사몰 연계 기능을 어드민에 통합해 자사몰 운영·마케팅 데이터를 일괄 관리했습니다.\n\n애플리케이션 개발뿐 아니라 운영 인프라와 데이터베이스 관리도 함께 담당하여 운영 DB 6GB·최대 100만 행+ 테이블 환경에서 인덱스 설계 및 DDL 적용, nginx 설정 최적화, 배치 운영, 장애 분석을 수행했으며, 자정 시간대 반복적으로 발생하던 Amazon RDS Lock Spike의 원인을 배치 작업 간 동시성 충돌로 규명하고 실행 구조를 개선해 해결했습니다.\n\n애플리케이션 개발을 넘어 외부 시스템 연동, 데이터 파이프라인 설계, 장애 분석, 성능 최적화, DBA까지 서비스 전 계층을 단독으로 책임지고 운영한 프로젝트입니다.',
     image: '',
-    tags: ['React', 'NestJS', 'TypeScript', 'Prisma', 'MySQL', 'AWS S3', 'Swagger'],
-    category: ['NestJS'],
-    period: '2026.02 ~ 현재 진행중',
+    tags: ['NestJS', 'Next.js', 'TypeScript', 'Prisma', 'MySQL', 'AWS RDS', 'nginx', 'Swagger'],
+    category: ['NestJS', 'Next.js', 'TypeScript'],
+    period: '2026.02 ~ 현재',
     role: '풀스택 개발자',
     features: [
-      'React 기반 어드민 대시보드 UI - 채널별 매출 추이·정산 현황·트래픽 지표를 시각화한 컴포넌트 기반 SPA 화면 구성 및 NestJS REST API 연동',
-      '멀티채널 통합 대시보드 - Shopby·Naver·Kiosk 3개 채널의 일마감·금일 매출·주간 추이·월간 KPI와 IFDO 웹 트래픽(페이지뷰·구매전환율·검색엔진 유입·캠페인 성과) 통계를 하나의 대시보드에서 통합 조회',
-      'JWT 인증 및 RBAC - Passport.js 기반 JWT 인증, bcrypt 솔트 해싱, 역할 기반 접근 제어로 어드민 계정 보안 체계 구축',
-      '정산 관리 시스템 - Shopby·Naver 채널별 건별/일별 정산 조회, 파트너사 정산 리포트 생성, 채널 믹스 분석 및 월간 KPI 보고서 자동 산출',
-      'Cron 기반 자동 동기화 - FIFO 잡 큐로 동시 실행 충돌을 방지하며, 일일 매출·키오스크 구매·로그 정리 등 3종 스케줄 작업을 무중단 운영',
-      '마이핑 상품·카테고리 관리 - 상품 유형 규칙, 카테고리 상태 추적, 제외 규칙(조합 방지) 등 내부 상품 관리 노코드 설정 시스템 구현',
+      '멀티채널 통합 대시보드 - 샵바이·네이버·키오스크·오프라인 POS 등 7개 외부 시스템의 매출·정산·주문·트래픽을 단일 대시보드에서 실시간 통합 조회',
+      '지표 분석 - 자사몰·네이버·POS·키오스크 채널의 매출·주문·취소·반품·방문 등 핵심 지표를 시계열로 집계·비교하고 분석 지표 구성을 커스텀 설정',
+      '데이터 동기화 파이프라인 - 외부 시스템 7종 연동과 크론 배치로 온·오프라인 채널 데이터를 자동 동기화 (FIFO 잡 큐로 동시 실행 충돌 방지)',
+      '대용량 데이터 운영 - 운영 DB 6GB·최대 100만 행+ 테이블을 등가+범위 복합 인덱스로 설계해 서비스 쿼리 응답 수십 ms 유지',
+      '용량 모니터링·수명주기 정책 - 테이블별 용량·행수·증가 추이 정례 측정, 영구 보존 데이터는 인덱스·압축, 로그성 데이터는 보존 기간 기반 정리로 이원화',
+      '정산·KPI 리포트 - 채널별 건별/일별 정산, 파트너사 정산 리포트, 채널 믹스 분석 및 월간 KPI 자동 산출',
+      '자사몰 연계 기능 - 멤버십 회원 등급, 쿠폰 발급, 친구추천·적립 등 샵바이 자사몰 연동 기능을 어드민에서 통합 관리',
+      '인증·보안·운영 안정성 - JWT/RBAC 인증, Winston 로그 로테이션, nginx 튜닝, Global ValidationPipe 요청 검증',
     ],
     points: [
-      'React SPA로 어드민 대시보드 전체 화면을 구성하고, NestJS REST API와 연동하여 3개 채널 데이터를 실시간 조회·시각화하는 풀스택 아키텍처 설계',
-      'NestJS 모듈 아키텍처를 활용하여 채널별(Shopby·Naver·Kiosk) 독립 모듈로 설계하고, 통합 대시보드에서 Promise.all 병렬 호출로 3개 채널 데이터를 동시 집계하여 API 응답 성능을 최적화',
-      'Naver Commerce OAuth 2.0 토큰 관리 시 만료 5분 전 선제적 갱신 로직과 토큰 캐싱을 구현하여 외부 API 호출 실패율을 최소화하고 안정적인 데이터 수집 보장',
-      'Prisma ORM 기반 35개 DB 모델(매출·정산·고객·트래픽·상품·스케줄러 로그 등)을 설계하고, BigInt 직렬화 커스텀 처리 및 Prisma 에러 핸들링 유틸리티를 구현하여 타입 안전한 데이터 접근 계층 구축',
-      'FIFO 잡 큐 기반 스케줄러 시스템을 설계하여 Cron 작업 간 동시 실행 충돌을 원천 방지하고, 일일 매출 동기화·키오스크 구매 수집·로그 클린업 3종 배치 작업을 안정적으로 운영',
+      'NestJS 백엔드(REST API 188개·DB 테이블 72개·비즈니스 도메인 29개)와 Next.js 어드민 프론트엔드(화면 40여 개)를 기획·설계·개발·운영까지 1인 단독 수행',
+      '샵바이·네이버 스마트스토어·키오스크·오프라인 POS·IFDO 웹로그 분석·인스타그램·스냅핏 등 외부 시스템 7종의 데이터 동기화 파이프라인과 크론 배치 설계·운영',
+      '자사몰·네이버·POS·키오스크 채널의 매출·주문·취소·반품·방문 등 핵심 지표를 시계열(series)로 집계·비교하고 지표 구성을 커스텀 설정할 수 있는 지표 분석 기능 구현',
+      '멤버십 회원 등급 관리, 쿠폰 발급, 친구추천·적립 등 샵바이 자사몰 연계 기능을 어드민에 통합하여 자사몰 운영·마케팅 데이터를 일괄 관리',
+      'Prisma ORM 기반 72개 DB 모델을 설계하고, BigInt 직렬화 커스텀 처리 및 Prisma 에러 핸들링 유틸리티를 구현하여 타입 안전한 데이터 접근 계층 구축',
+      'performance_schema 실행 통계 기반 성능 점검 루틴으로 인덱스 미적용 쿼리를 조기 탐지하고, 운영·개발 환경 간 인덱스 드리프트(수동 DDL 이력)를 대조 관리',
+      '100만 행+ 테이블을 참조하는 쿼리를 전수 인벤토리화하고 화면·배치별 접근 패턴(조회 기간·필터 조건)을 파악해 등가+범위 복합 인덱스를 설계, 서비스 쿼리 응답을 수십 ms로 유지',
+      '자정 시간대 반복되던 Amazon RDS Lock Spike를 배치 작업 간 동시성 충돌로 규명하고 실행 구조를 개선해 문제를 해소',
+      '운영 DB 인덱스 설계·DDL 적용, nginx 튜닝, 장애 원인 규명 등 애플리케이션 개발을 넘어 데이터 엔지니어링·DBA 영역까지 직접 수행',
+      'FIFO 잡 큐 기반 스케줄러 시스템을 설계하여 Cron 작업 간 동시 실행 충돌을 원천 방지하고, 일일 매출 동기화·키오스크 구매 수집·로그 클린업 3종 배치를 무중단 운영',
       'Winston 일별 로그 로테이션(파일당 100MB, 7일 후 자동 압축, 60일 후 자동 삭제)과 환경별 로그 레벨 분리를 적용하여 개발·운영 환경 모두에서 효과적인 모니터링 체계 확보',
-      'Global ValidationPipe(whitelist + forbidNonWhitelisted)와 Joi 환경변수 스키마 검증, CORS 멀티 환경 설정을 적용하여 요청 유효성 검사 및 배포 환경별 보안 설정을 체계화',
-      'Shopby Webhook 기반 실시간 주문 데이터 캡처, 상품 리뷰 연동, 회원 데이터 동기화 파이프라인을 구축하여 채널 간 데이터 일관성 유지',
     ],
     screenshots: []
   },
@@ -483,13 +487,8 @@ export function Projects() {
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
                   ) : (
-                    <div className="w-full h-full bg-gradient-to-br from-primary/20 via-primary/10 to-background flex flex-col items-center justify-center gap-3 transition-transform duration-500 group-hover:scale-110">
-                      <div className="text-4xl font-bold text-primary/40">{project.title.charAt(0)}</div>
-                      <div className="flex flex-wrap justify-center gap-1.5 px-4">
-                        {project.tags.slice(0, 4).map((tag) => (
-                          <span key={tag} className="text-[11px] px-2 py-0.5 rounded-full bg-primary/10 text-primary/60">{tag}</span>
-                        ))}
-                      </div>
+                    <div className="w-full h-full bg-gradient-to-br from-primary/20 via-primary/10 to-background flex items-center justify-center transition-transform duration-500 group-hover:scale-110">
+                      <ImageIcon className="h-12 w-12 text-primary/30" />
                     </div>
                   )}
                   <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-8">
@@ -601,9 +600,17 @@ export function Projects() {
               {/* Description */}
               <div className="mb-6">
                 <h3 className="text-xl mb-3 tracking-tight">프로젝트 개요</h3>
-                <p className="text-muted-foreground leading-relaxed tracking-tight">
-                  {selectedProject.fullDescription}
-                </p>
+                <div className="space-y-4">
+                  {selectedProject.fullDescription
+                    .split('\n')
+                    .map((para) => para.trim())
+                    .filter((para) => para.length > 0)
+                    .map((para, i) => (
+                      <p key={i} className="text-muted-foreground leading-relaxed tracking-tight">
+                        {para}
+                      </p>
+                    ))}
+                </div>
               </div>
 
               <Separator className="my-6" />
