@@ -17,7 +17,7 @@ export const projects = [
     fullDescription: '다양한 거래소의 암호화폐 시세를 실시간으로 조회하고 분석할 수 있는 웹 서비스입니다. Socket.io와 Redis를 활용한 실시간 데이터 전송 시스템을 구축하여 빠르고 정확한 시세 정보를 제공하며, 비트코인 대비 알트코인 변동성 차트 기능으로 투자 판단을 지원합니다.',
     image: '/mytradinginfo/mytradinginfo.png',
     tags: ['TypeScript', 'Java', 'Socket.io', 'Redis', 'MySQL'],
-    category: ['TypeScript', ", ",'Java'],
+    category: ['TypeScript', 'Java'],
     period: '2020.04 ~ 2023.09',
     role: '백엔드 개발자',
     features: [
@@ -131,7 +131,7 @@ export const projects = [
     fullDescription: 'Node.js를 사용하여 프론트엔드와 백엔드를 모두 구현한 기업 홈페이지입니다. 채용 공고 관리 시스템, 이력서 지원 기능, 파일 업로드 시스템을 구축했으며, Google reCAPTCHA v3를 적용하여 악성 트래픽을 차단하고 보안을 강화했습니다. 채용 프로세스 개선으로 사내 지원율을 약 20% 증가시켰습니다.',
     image: '/softwiz/softwiz.png',
     tags: ['Node.js', 'MySQL', 'reCAPTCHA', 'Express'],
-    category: ['Node.js',", ", "JavaScript"],
+    category: ['Node.js', 'JavaScript'],
     period: '2020.04 ~ 2023.09',
     role: '풀스택 개발자',
     features: [
@@ -192,15 +192,18 @@ export const projects = [
   {
     id: 7,
     title: '오리(오빠의 리뷰)',
-    description: '템플릿 기반으로 리뷰 사이트와 API를 자동 생성하는 커뮤니티 플랫폼',
-    fullDescription: 'Next.js와 Node.js 기반으로 개발된 리뷰 통합 커뮤니티 플랫폼입니다. 어드민에서 템플릿을 선택하면 맞춤형 리뷰 사이트와 API가 자동으로 생성되어, 별도의 개발 없이도 새로운 리뷰 서비스를 즉시 배포할 수 있습니다. 대학, 교회, 회사, 외주 등 다양한 카테고리별 후기를 작성하고 공유할 수 있으며, TypeScript와 Tailwind CSS를 활용한 모던한 UI/UX를 제공합니다. Sequelize ORM을 통한 효율적인 데이터베이스 관리와 실시간 검색 자동완성 기능으로 사용자 경험을 개선했습니다.',
+    description: '템플릿 기반 리뷰 사이트 자동 생성에 멀티소스 크롤링(외부 API 7종)·접속 통계 어드민을 갖춘 커뮤니티 플랫폼',
+    fullDescription: 'Next.js와 Node.js 기반으로 개발된 리뷰 통합 커뮤니티 플랫폼입니다. 어드민에서 템플릿을 선택하면 맞춤형 리뷰 사이트와 API가 자동으로 생성되어, 별도의 개발 없이도 새로운 리뷰 서비스를 즉시 배포할 수 있습니다. 대학, 교회, 회사, 외주 등 다양한 카테고리별 후기를 작성하고 공유할 수 있으며, TypeScript와 Tailwind CSS를 활용한 모던한 UI/UX를 제공합니다. Sequelize ORM을 통한 효율적인 데이터베이스 관리와 실시간 검색 자동완성 기능으로 사용자 경험을 개선했습니다.\n\n어드민에는 카카오·네이버·구글 플레이스·식신 멀티소스 크롤러를 내장해 맛집·회사 데이터를 수집하며, dryRun 미리보기 후 확정 저장하는 2단계 워크플로, 실시간 스트리밍 진행률, 이름+주소 기반 중복 제거와 좌표 보정을 갖췄습니다. Gemini AI가 크롤링 키워드를 자동 생성하고 주간 스케줄러가 수집을 자동화하며, OpenDart 연동으로 상장사 재무 정보를 매일 갱신합니다. 또한 자체 페이지뷰 트래킹으로 경로별·유입별·일별 접속 통계와 방문 로그를 어드민에서 제공합니다.',
     image: '/ori/ori.png',
     tags: ['Next.js', 'Node.js', 'Express', 'TypeScript', 'Sequelize', 'Tailwind CSS'],
-    category: ['Next.js', ", " , 'Node.js'],
+    category: ['Next.js', 'Node.js'],
     period: '2025.01 ~ 현재',
     role: '풀스택 개발자',
     features: [
       '템플릿 기반 사이트 자동 생성 - 어드민에서 템플릿을 선택하면 리뷰 사이트와 API가 자동으로 구축되는 노코드 빌더',
+      '멀티소스 데이터 크롤러 - 카카오·네이버·구글·식신에서 맛집·회사 데이터 수집, dryRun 미리보기 → 확정 저장 2단계 워크플로와 실시간 진행률 스트리밍',
+      'AI 크롤링 자동화 - Gemini 기반 키워드 자동 생성과 주간 스케줄러 수집, OpenDart 상장사 정보 일일 갱신',
+      '접속 통계 - 경로·IP·Referer 자체 수집, 경로별/유입별/일별 통계와 방문 로그를 기간 프리셋으로 조회',
       '카테고리별 후기 시스템 - 대학, 교회, 회사, 외주 등 다양한 분야의 리뷰를 체계적으로 분류',
       '실시간 검색 자동완성 - 사용자 입력에 따른 즉각적인 검색어 추천 기능',
       '베스트 후기 시스템 - 평점 기반 우수 리뷰 선별 및 노출',
@@ -209,6 +212,9 @@ export const projects = [
     points: [
       'Next.js와 TypeScript를 활용한 타입 안전성이 보장된 프론트엔드 개발 및 Tailwind CSS로 반응형 UI 구현',
       '어드민 템플릿 시스템 설계로 별도 개발 없이 리뷰 사이트와 API를 자동 생성하는 구조 구현',
+      '카카오 Local·네이버·구글 Places·식신 등 외부 API 7종을 연동한 멀티소스 크롤러 구축 — 소스별 병렬 수집, 이름+주소 unique 중복 제거, 지오코딩 좌표 보정, NDJSON 스트리밍으로 어드민에 실시간 진행률 표시',
+      'Gemini AI 키워드 자동 생성 + node-cron 주간 스케줄러로 크롤링을 자동화하고, OpenDart 연동 상장사 재무·직원 정보 일일 갱신 등 자동화 배치 3종 운영',
+      '자체 페이지뷰 트래킹 시스템 구현 — 경로·IP·User-Agent·Referer 수집, 경로별/유입별/일별 집계 API와 방문 로그 어드민 화면 제공',
       'Node.js와 Express 기반 RESTful API 서버 구축 및 Sequelize ORM을 통한 효율적인 데이터베이스 관리',
       '검색 자동완성 기능 개발로 사용자가 원하는 정보를 빠르게 찾을 수 있도록 UX 개선',
       '카테고리별 리뷰 시스템 구축으로 사용자가 관심 분야의 후기를 효율적으로 탐색할 수 있는 구조 설계',
@@ -237,7 +243,7 @@ export const projects = [
     fullDescription: 'Next.js와 TypeScript로 개발된 최저가 검색 서비스입니다. 네이버 쇼핑 API를 활용하여 최대 1,000개의 상품 정보를 수집하고, 사용자가 설정한 목표가와 시장 최저가를 비교 분석합니다. 중고/렌탈/직구 제외 옵션과 노이즈 필터링 기능을 제공하여 프로모션 가격 설계 시 정확한 시장 분석을 지원합니다.',
     image: '/salermoon/salermoon.png',
     tags: ['Next.js', 'TypeScript', 'Naver API', 'Vercel'],
-    category: ['Next.js', ", " , 'TypeScript'],
+    category: ['Next.js', 'TypeScript'],
     period: '2026.01 ~ 2026.01',
     role: '프론트엔드 개발자',
     features: [
@@ -590,7 +596,11 @@ export function Projects() {
                   <div className="h-5 w-5 text-primary flex items-center justify-center">💻</div>
                   <div>
                     <p className="text-xs text-muted-foreground">카테고리</p>
-                    <p className="tracking-tight">{selectedProject.category}</p>
+                    <p className="tracking-tight">
+                      {Array.isArray(selectedProject.category)
+                        ? selectedProject.category.join(', ')
+                        : selectedProject.category}
+                    </p>
                   </div>
                 </div>
               </div>
