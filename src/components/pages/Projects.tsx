@@ -269,7 +269,7 @@ export const projects = [
   {
     id: 9,
     title: 'AI 뉴스봇',
-    description: 'RAG 하이브리드 검색·Cerebras LLM 분석에 자체 파인튜닝 감성모델(KLUE/RoBERTa→ONNX)을 결합한 AI 뉴스 플랫폼',
+    description: '멀티소스 뉴스 크롤링부터 RAG 하이브리드 검색·LLM 분석, 자체 파인튜닝 감성모델(KLUE/RoBERTa→ONNX)까지 갖춘 AI 뉴스 플랫폼',
     fullDescription: 'Express.js와 Next.js 14로 구축한 AI 기반 뉴스 검색·분석 플랫폼입니다. Google News RSS, Naver News, Daum News 스크래핑으로 다중 소스 뉴스를 수집합니다.\n\nBM25 키워드 스코링과 MiniLM 다국어 임베딩(384차원) 코사인 유사도를 RRF(Reciprocal Rank Fusion)로 결합한 하이브리드 검색을 제공하며, 쿼리 토큰 수·의문문 여부로 keyword/conceptual/balanced 타입을 자동 분류해 BM25/시맨틱 가중치를 동적 조절합니다. RAG 파이프라인은 기사 URL 본문을 직접 fetch하고 @mozilla/readability로 보일러플레이트를 제거한 뒤, 문단/문장 기반 400자 청킹(80자 overlap) 후 쿼리 유사도 높은 청크를 Cerebras LLM 프롬프트에 컨텍스트로 주입합니다. cheerio로 테이블·이미지 정보를 추출해 본문을 보강하고, 사용자 피드백을 RRF 점수 boost로 반영하는 피드백 루프도 구축했습니다.\n\nCerebras Llama 3.1-8b LLM으로 뉴스 핵심 요약·감성 분석·트렌드 인사이트를 생성합니다. 특히 감성 분류는 외부 API에 의존하지 않고, LLM 자동 라벨링으로 축적한 6천여 건 데이터로 KLUE/RoBERTa를 직접 파인튜닝(PyTorch·HuggingFace)하고 ONNX로 변환해 백엔드에서 추론합니다. 오분류 교정을 재학습에 반영하는 "라벨링 → 학습 → 추론 → 교정 → 재학습" 자기개선 루프로, 데이터 구축부터 학습·배포·개선까지 ML 사이클 전체를 직접 운영합니다.\n\nLark Webhook 연동으로 스케줄 기반 뉴스 다이제스트 자동 발송 기능까지 지원합니다.',
     image: '/newsCrawler/newsCrawler.png',
     tags: ['Next.js', 'TypeScript', 'Express.js', 'Node.js', 'Cerebras LLM', 'RAG', 'Lark', 'AI/ML', 'Python', 'PyTorch', 'ONNX'],
@@ -277,6 +277,7 @@ export const projects = [
     period: '2026.02 ~ 현재',
     role: '풀스택 개발자',
     features: [
+      '멀티소스 뉴스 크롤링 - Google News RSS 파싱과 Naver·Daum News Cheerio 스크래핑을 병렬 수집(Promise.allSettled), Bigram Jaccard 유사도 기반 중복 제거',
       '하이브리드 검색 시스템 - BM25 키워드 스코링과 MiniLM 임베딩 코사인 유사도를 RRF(k=60)로 결합, 쿼리 토큰 수·의문문 여부로 keyword/conceptual/balanced 타입 자동 분류하여 BM25/시맨틱 가중치(0.4~0.7) 동적 조절',
       'RAG 파이프라인 - 기사 URL 본문 직접 fetch, @mozilla/readability 보일러플레이트 제거, 문단/문장 기반 400자 청킹(80자 overlap) 후 쿼리 유사도 높은 청크를 LLM 컨텍스트로 주입, 청크 코사인 유사도 평균을 confidence_score로 응답에 포함',
       'AI 뉴스 분석 - Cerebras LLM 기반 핵심 요약, 주요 포인트, 감성 분석(-1~+1 스코어), 트렌드 분석 제공',
