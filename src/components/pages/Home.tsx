@@ -11,7 +11,7 @@ export function Home() {
     const navigate = useNavigate();
   const stats = [
     { label: '경력 연차', value: '7+' },
-    { label: '완료한 프로젝트', value: '9+' },
+    { label: '완료한 프로젝트', value: '10+' },
     // { label: '협업 국가', value: '3' },
   ];
 

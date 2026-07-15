@@ -95,12 +95,13 @@ export function ProjectImageSlider({
               key={i}
               className="relative w-full flex-shrink-0"
             >
-              {/* 미디어 래퍼: 고정 높이 + object-contain으로 비율 유지 */}
+              {/* 미디어 래퍼: 고정 높이 + object-fit contain으로 비율 유지 (프리빌드 CSS에 object-contain 클래스가 없어 인라인 style로 적용) */}
               <div className="flex items-center justify-center bg-black/70 rounded-lg w-full overflow-hidden aspect-video">
                 {video ? (
                   <video
                     src={img.src}
-                    className="w-full h-full object-contain rounded-lg"
+                    className="w-full h-full rounded-lg"
+                    style={{ objectFit: 'contain' }}
                     controls
                     playsInline
                     // autoPlay muted loop  // 원하면 활성화
@@ -109,7 +110,8 @@ export function ProjectImageSlider({
                   <img
                     src={img.src}
                     alt={img.alt ?? `slide ${i + 1}`}
-                    className="w-full h-full object-contain rounded-lg"
+                    className="w-full h-full rounded-lg"
+                    style={{ objectFit: 'contain' }}
                     draggable={false}
                   />
                 )}
