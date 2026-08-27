@@ -447,7 +447,14 @@ export const projects = [
       'CloudFront 서명 쿠키 프록시로 HLS 미리보기 재생을 구현하고, 대용량 원본은 인제스트 후 Range 서빙으로 다운로드 이어받기 지원',
       '1코어 사내 서버 환경에 맞춰 ffmpeg를 낮은 우선순위(nice)로 실행해 서비스 응답성을 유지하고, git 푸시 기반 무인 자동배포(pm2 reload) 파이프라인 구성',
     ],
-    screenshots: []
+    screenshots: [
+      '/cms/cms1.png',
+      '/cms/cms2.png',
+      '/cms/cms3.png',
+      '/cms/cms4.png',
+      '/cms/cms5.png',
+      '/cms/cms6.png'
+    ]
   },
   {
     id: 14,
