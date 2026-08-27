@@ -419,7 +419,7 @@ export const projects = [
     title: '사내 콘텐츠 관리 플랫폼 (CMS)',
     description: 'OTT가 축적한 영상 자산을 사내 미디어 업무로 확장한 콘텐츠 관리 플랫폼 - 기존 서비스 무변경 연동, ffmpeg 처리 파이프라인, 반출 승인·권리 통제까지 1인 개발',
     fullDescription: 'Next.js 15(App Router) 기반 사내 콘텐츠 관리 플랫폼(CMS)을 설계서 작성부터 개발·사내 서버 배포·운영까지 단독으로 수행한 프로젝트입니다.\n\n기존 OTT 서비스(시네마)가 AWS에 축적해 온 영상과 메타데이터를 활용하되, 운영 중인 서비스에는 코드 한 줄도 변경하지 않는 것을 절대 원칙으로 삼았습니다. 전용 계정 기반 읽기 전용 연동으로 콘텐츠 메타데이터를 CMS 카탈로그에 미러링하여, 원본 서비스의 장애나 변경과 독립적으로 동작하는 구조를 만들었습니다.\n\n미디어 처리는 ffmpeg 기반 인프로세스 Job 워커로 구현했습니다. 규격 변환, 롱폼에서 숏폼 구간 추출, 썸네일·스틸 추출, 워터마크 스크리너, 음원 추출, AI 자막(STT) 생성을 하나의 작업 추상으로 처리하며, 일반·어드민 2개 큐를 큐별 FIFO로 순차 실행하고 작업 취소·대기 순서 변경·재기동 시 중단 작업 자동 복구를 지원합니다.\n\n사내 미디어 자산이 외부로 나가는 경로(유튜브 업로드, FTP/SFTP 전송, Lark 드라이브, 다운로드, 기한 공유 링크)에는 단일 승인 검증을 두어 검토를 통과한 산출물만 반출되도록 통제했고, 계약 기간이 만료된 콘텐츠는 외부 반출이 자동 차단되는 권리·라이선스 관리를 함께 구현했습니다.\n\n인증은 사내 Lark(라크) OAuth QR 로그인으로 전환하고 jose 서명 JWT 세션을 자체 구현했으며, 역할·팀 기반 접근 제어와 전 작업 감사 로그로 사내 보안 요건을 충족했습니다. 배포는 git 푸시 기반 무인 자동배포(pm2 reload)로 구성했습니다.',
-    image: '',
+    image: '/CMS/CMS1.png',
     tags: ['Next.js', 'TypeScript', 'Prisma', 'ffmpeg', 'SQLite', 'Lark OAuth', 'YouTube API'],
     category: ['Next.js', 'TypeScript'],
     period: '2026.06 ~ 현재',
@@ -448,12 +448,11 @@ export const projects = [
       '1코어 사내 서버 환경에 맞춰 ffmpeg를 낮은 우선순위(nice)로 실행해 서비스 응답성을 유지하고, git 푸시 기반 무인 자동배포(pm2 reload) 파이프라인 구성',
     ],
     screenshots: [
-      '/cms/cms1.png',
-      '/cms/cms2.png',
-      '/cms/cms3.png',
-      '/cms/cms4.png',
-      '/cms/cms5.png',
-      '/cms/cms6.png'
+      '/CMS/CMS1.png',
+      '/CMS/CMS2.png',
+      '/CMS/CMS3.png',
+      '/CMS/CMS4.png',
+      '/CMS/CMS5.png'
     ]
   },
   {
