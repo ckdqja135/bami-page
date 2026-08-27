@@ -12,7 +12,7 @@ import { ProjectImageSlider } from '../ui/projectImgSlider';
 export const projects = [
   {
     id: 1,
-    title: '코인 실시간 시세 조회 시스템',
+    title: 'MyTradingInfo',
     description: '다양한 거래소의 암호화폐 시세를 실시간으로 제공하는 웹 서비스',
     fullDescription: '다양한 거래소의 암호화폐 시세를 실시간으로 조회하고 분석할 수 있는 웹 서비스입니다. Socket.io와 Redis를 활용한 실시간 데이터 전송 시스템을 구축하여 빠르고 정확한 시세 정보를 제공하며, 비트코인 대비 알트코인 변동성 차트 기능으로 투자 판단을 지원합니다.',
     image: '/mytradinginfo/mytradinginfo.png',
@@ -45,7 +45,7 @@ export const projects = [
   },
   {
     id: 2,
-    title: '바이너리 옵션 거래 플랫폼',
+    title: 'Eztross',
     description: 'Pixi.js 기반 실시간 차트와 거래 기능을 제공하는 트레이딩 플랫폼',
     fullDescription: 'Pixi.js(2D WebGL 렌더링 라이브러리)를 사용하여 개발한 바이너리 옵션 거래 플랫폼입니다. PC(WTS)와 모바일(MTS) 환경을 모두 지원하며, 실시간 차트, 보조지표, 그래픽 툴, 주문 패널 등 트레이딩에 필요한 다양한 기능을 제공합니다. MVP 패턴과 RxJS Observer 패턴을 적용하여 유지보수성과 확장성을 크게 개선했습니다.',
     image: '/eztross/eztross.png',
