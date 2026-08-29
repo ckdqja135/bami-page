@@ -62,7 +62,7 @@ export function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
               >
-                LLM 응용 개발자
+                Product Engineer
               </motion.p>
 
               <motion.div
