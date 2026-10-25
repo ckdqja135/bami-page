@@ -18,6 +18,7 @@ export const projects = [
     image: '/mytradinginfo/mytradinginfo.png',
     tags: ['TypeScript', 'Java', 'Socket.io', 'Redis', 'MySQL'],
     category: ['TypeScript', 'Java'],
+    projectType: ['company'],
     period: '2020.04 ~ 2023.09',
     role: '백엔드 개발자',
     features: [
@@ -51,6 +52,7 @@ export const projects = [
     image: '/eztross/eztross.png',
     tags: ['JavaScript', 'Pixi.js', 'RxJS', 'MVP', 'WebGL'],
     category: 'JavaScript',
+    projectType: ['company'],
     period: '2020.04 ~ 2023.09',
     role: '프론트엔드 개발자',
     features: [
@@ -80,6 +82,7 @@ export const projects = [
     image: '',
     tags: ['Go', 'Kafka', 'gorilla/mux', 'Negroni', 'Sarama'],
     category: 'Go',
+    projectType: ['company'],
     period: '2020.04 ~ 2023.09',
     role: '백엔드 개발자',
     features: [
@@ -105,6 +108,7 @@ export const projects = [
     image: '/telegram-bot/telegram-bot.png',
     tags: ['Java'],
     category: 'Java',
+    projectType: ['company'],
     period: '2020.04 ~ 2023.09',
     role: '백엔드 개발자',
     features: [
@@ -132,6 +136,7 @@ export const projects = [
     image: '/softwiz/softwiz.png',
     tags: ['Node.js', 'MySQL', 'reCAPTCHA', 'Express'],
     category: ['Node.js', 'JavaScript'],
+    projectType: ['company'],
     period: '2020.04 ~ 2023.09',
     role: '풀스택 개발자',
     features: [
@@ -164,6 +169,7 @@ export const projects = [
     image: '/kgct/kgct.png',
     tags: ['Node.js', 'MariaDB', 'PM2', 'Nginx', 'Express'],
     category: 'Node.js',
+    projectType: ['company'],
     period: '2024.02 ~ 2025.10',
     role: '백엔드 개발자',
     features: [
@@ -197,6 +203,7 @@ export const projects = [
     image: '/ori/ori.png',
     tags: ['Next.js', 'Node.js', 'Express', 'TypeScript', 'Sequelize', 'Tailwind CSS'],
     category: ['Next.js', 'Node.js'],
+    projectType: ['personal'],
     period: '2025.01 ~ 현재',
     role: 'Product Engineer',
     features: [
@@ -244,6 +251,7 @@ export const projects = [
     image: '/salermoon/salermoon.png',
     tags: ['Next.js', 'TypeScript', 'Naver API', 'Vercel'],
     category: ['Next.js', 'TypeScript'],
+    projectType: ['company', 'personal'],
     period: '2026.01 ~ 2026.01',
     role: '프론트엔드 개발자',
     features: [
@@ -274,6 +282,7 @@ export const projects = [
     image: '/newsCrawler/newsCrawler.png',
     tags: ['Next.js', 'TypeScript', 'Express.js', 'Node.js', 'Cerebras LLM', 'RAG', 'Lark', 'AI/ML', 'Python', 'PyTorch', 'ONNX'],
     category: ['Next.js', 'Node.js'],
+    projectType: ['company', 'personal'],
     period: '2026.02 ~ 현재',
     role: 'Product Engineer',
     features: [
@@ -330,6 +339,7 @@ export const projects = [
     image: '/cinema/cinema.png',
     tags: ['Java', 'Spring Boot', 'React Native', 'AWS CloudFront', 'Chromecast', 'HLS', 'Proxy Server'],
     category: 'Java',
+    projectType: ['company'],
     period: '2025.11 ~ 현재',
     role: '백엔드 개발자',
     features: [
@@ -360,6 +370,7 @@ export const projects = [
     image: '',
     tags: ['NestJS', 'Next.js', 'TypeScript', 'Prisma', 'MySQL', 'AWS RDS', 'nginx', 'Swagger'],
     category: ['NestJS', 'Next.js', 'TypeScript'],
+    projectType: ['company'],
     period: '2026.02 ~ 현재',
     role: 'Product Engineer',
     features: [
@@ -395,6 +406,7 @@ export const projects = [
     image: '/batoner/batoner1.png',
     tags: ['Next.js', 'TypeScript', 'Prisma', 'MySQL', 'Playwright', 'Docker', 'Turborepo'],
     category: ['Next.js', 'TypeScript'],
+    projectType: ['outsourcing'],
     period: '2026.04 ~ 2026.12',
     role: '백엔드 개발자',
     features: [
@@ -430,6 +442,7 @@ export const projects = [
     image: '/CMS/CMS1.png',
     tags: ['Next.js', 'TypeScript', 'Prisma', 'ffmpeg', 'SQLite', 'Lark OAuth', 'YouTube API'],
     category: ['Next.js', 'TypeScript'],
+    projectType: ['company'],
     period: '2026.06 ~ 현재',
     role: 'Product Engineer',
     features: [
@@ -471,6 +484,7 @@ export const projects = [
     image: '',
     tags: ['NestJS', 'TypeScript', 'Prisma', 'MySQL', 'JWT', 'bcrypt', 'Winston'],
     category: ['NestJS', 'TypeScript'],
+    projectType: ['company'],
     period: '2026.07 ~ 현재',
     role: '백엔드 개발자',
     features: [
@@ -497,12 +511,66 @@ export const projects = [
     ],
     screenshots: []
   },
+  {
+    id: 15,
+    title: '마켓트래커 (MarketTracker)',
+    description: '코인과 국내·미국 주식 시세를 한 사이트에서 보고 비교할 수 있게 만든 시장 정보 서비스입니다. 회원가입 없이 바로 사용할 수 있습니다.',
+    fullDescription: '코인 시세는 거래소마다, 주식과 지수는 증권 앱마다 따로 열어봐야 하는 불편함을 덜기 위해 만든 개인 프로젝트입니다. 코인과 국내·미국 주식을 한 검색창에서 찾고, 거래소별 가격과 김치 프리미엄, 롱/숏 비율, 거래소 공지까지 한 사이트에서 확인할 수 있습니다.\n\n대표 기능인 CIM(Coin Impulse Monitor) 차트는 매일 오전 9시를 기준으로 코인별 등락률을 비트코인과 비교해 보여줘, 시장 흐름과 다르게 움직이는 코인을 바로 찾을 수 있게 합니다. 기획부터 개발, 배포와 운영까지 혼자 진행하고 있습니다.',
+    image: '/market-tracker/market-tracker.png',
+    tags: ['TypeScript', 'React', 'Node.js', 'Express'],
+    category: ['TypeScript', 'Node.js'],
+    projectType: ['personal'],
+    period: '2024.07 ~ 현재',
+    role: '풀스택 개발자',
+    features: [
+      '통합 검색 - 코인과 국내·미국 주식을 한 검색창에서 찾고 상세 화면으로 이동',
+      'CIM 차트 - 오전 9시 기준 코인별 등락률을 비트코인과 비교해 표시',
+      '거래소별 시세 비교 - 국내외 거래소 가격과 김치 프리미엄을 한 표에서 비교',
+      '롱/숏 모니터 - 해외 거래소의 매수·매도 비율과 대량 체결, 청산 현황',
+      '비교 차트·내 대시보드 - 여러 자산을 한 차트에 겹쳐 보고, 원하는 위젯으로 나만의 화면 구성',
+      '거래소 공지·채팅 - 업비트·빗썸 상장·유의 공지 모아보기와 익명 실시간 채팅',
+    ],
+    points: [
+      '여러 거래소와 데이터 제공처의 공개 데이터를 한 서버에서 모아 같은 형식으로 정리해 제공',
+      '외부 데이터 호출이 실패해도 최근 값을 보여주도록 처리해 화면이 비지 않게 구성',
+      '서버를 재시작하거나 배포해도 롱/숏 집계가 끊기지 않도록 저장·복원',
+      '한/영 다국어, 라이트/다크 테마, 모바일 화면 지원',
+    ],
+    demoUrl: 'https://market-tracker-hdqa.vercel.app/',
+    screenshots: [
+      '/market-tracker/market-tracker.png',
+      '/market-tracker/market-tracker2.png',
+      '/market-tracker/market-tracker3.png',
+      '/market-tracker/market-tracker4.png',
+      '/market-tracker/market-tracker5.png',
+      '/market-tracker/market-tracker6.png',
+    ]
+  },
 ];
 
 const allTags = ['전체', 'Go', 'Java', 'JavaScript', 'Next.js', 'Node.js', 'Python', 'TypeScript'];
 const ITEMS_PER_PAGE = 9;
 
+// 프로젝트 구분 - 여러 구분에 해당하는 프로젝트(회사·개인 등)는 각 필터에 모두 노출
+const projectTypes = [
+  { key: 'all', label: '전체 프로젝트', short: '' },
+  { key: 'company', label: '회사 프로젝트', short: '회사' },
+  { key: 'personal', label: '개인 프로젝트', short: '개인' },
+  { key: 'outsourcing', label: '외주 프로젝트', short: '외주' },
+];
+
+const getProjectTypeLabel = (types: string[]) =>
+  types.map((type) => projectTypes.find((t) => t.key === type)?.short).join(' · ');
+
+const matchesType = (project: typeof projects[0], type: string) =>
+  type === 'all' || project.projectType.includes(type);
+
+const matchesTag = (project: typeof projects[0], tag: string) =>
+  tag === '전체' ||
+  (Array.isArray(project.category) ? project.category.includes(tag) : project.category === tag);
+
 export function Projects() {
+  const [selectedType, setSelectedType] = useState('all');
   const [selectedTag, setSelectedTag] = useState('전체');
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -510,14 +578,16 @@ export function Projects() {
   const [selectedMedia, setSelectedMedia] = useState<number | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const filteredProjects =
-    selectedTag === '전체'
-      ? projects
-      : projects.filter((project) =>
-          Array.isArray(project.category)
-            ? project.category.includes(selectedTag)
-            : project.category === selectedTag
-        );
+  const typeProjects = projects.filter((project) => matchesType(project, selectedType));
+
+  // 구분 선택 시 해당 구분에 프로젝트가 없는 기술 태그는 숨김 (빈 결과 방지)
+  const visibleTags =
+    selectedType === 'all'
+      ? allTags
+      : allTags.filter((tag) => typeProjects.some((project) => matchesTag(project, tag)));
+  const activeTag = visibleTags.includes(selectedTag) ? selectedTag : '전체';
+
+  const filteredProjects = typeProjects.filter((project) => matchesTag(project, activeTag));
 
   // 페이징 처리
   const totalPages = Math.ceil(filteredProjects.length / ITEMS_PER_PAGE);
@@ -525,10 +595,10 @@ export function Projects() {
   const endIndex = startIndex + ITEMS_PER_PAGE;
   const paginatedProjects = filteredProjects.slice(startIndex, endIndex);
 
-  // 태그 변경 시 첫 페이지로 이동
+  // 구분·태그 변경 시 첫 페이지로 이동
   useEffect(() => {
     setCurrentPage(1);
-  }, [selectedTag]);
+  }, [selectedType, activeTag]);
 
   // 페이지 변경 시 스크롤 맨 위로
   const handlePageChange = (page: number) => {
@@ -553,6 +623,32 @@ export function Projects() {
           </p>
         </motion.div>
 
+        {/* Project Type Chips (회사 / 개인 / 외주) */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="flex flex-wrap justify-center gap-3 mb-4"
+        >
+          {projectTypes.map((type) => (
+            <Badge
+              key={type.key}
+              variant={selectedType === type.key ? 'default' : 'outline'}
+              className={`cursor-pointer px-4 py-2 text-sm transition-all ${
+                selectedType === type.key
+                  ? 'bg-primary text-primary-foreground'
+                  : 'hover:bg-primary/10'
+              }`}
+              onClick={() => setSelectedType(type.key)}
+            >
+              {type.label}
+              <span className="opacity-70">
+                {projects.filter((project) => matchesType(project, type.key)).length}
+              </span>
+            </Badge>
+          ))}
+        </motion.div>
+
         {/* Filter Chips */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -560,12 +656,12 @@ export function Projects() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="flex flex-wrap justify-center gap-3 mb-12"
         >
-          {allTags.map((tag) => (
+          {visibleTags.map((tag) => (
             <Badge
               key={tag}
-              variant={selectedTag === tag ? 'default' : 'outline'}
+              variant={activeTag === tag ? 'default' : 'outline'}
               className={`cursor-pointer px-4 py-2 transition-all ${
-                selectedTag === tag
+                activeTag === tag
                   ? 'bg-primary text-primary-foreground'
                   : 'hover:bg-primary/10'
               }`}
@@ -621,6 +717,12 @@ export function Projects() {
                       자세히 보기 <ExternalLink className="h-4 w-4" />
                     </span>
                   </div>
+                  <Badge
+                    variant="outline"
+                    className="absolute top-4 right-4 z-10 bg-background/80 backdrop-blur-lg"
+                  >
+                    {getProjectTypeLabel(project.projectType)}
+                  </Badge>
                 </div>
                 <div className="p-6 flex flex-col flex-grow">
                   <h3 className="text-xl mb-2 tracking-tight">{project.title}</h3>
@@ -682,6 +784,14 @@ export function Projects() {
                   {selectedProject.title}
                 </DialogTitle>
               </DialogHeader>
+              {/* 프로젝트 구분 */}
+              <div className="flex flex-wrap gap-2 mb-4">
+                {selectedProject.projectType.map((type) => (
+                  <Badge key={type} variant="outline" className="px-3 py-1">
+                    {projectTypes.find((t) => t.key === type)?.label}
+                  </Badge>
+                ))}
+              </div>
               {/* Main Image Slider */}
               {(selectedProject.screenshots?.length || selectedProject.image) && (
                 <ProjectImageSlider
