@@ -241,6 +241,9 @@ export const projects = [
       '/ori/ori9.png',
       '/ori/ori10.png',
       '/ori/ori11.png',
+      '/ori/ori12.png',
+      '/ori/ori13.png',
+      '/ori/ori14.png',
     ]
   },
   {
