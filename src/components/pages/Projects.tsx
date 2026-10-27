@@ -577,7 +577,10 @@ export const projects = [
       '웹과 데스크톱이 동일한 화면과 기능을 공유하도록 구성하고, Windows·macOS 전용 기능을 Electron으로 확장',
     ],
     screenshots: [
-      '/chakchak/chakchak.jpg',
+      '/chakchak/chakchak-landing1.jpg',
+      '/chakchak/chakchak-landing2.jpg',
+      '/chakchak/chakchak-landing3.jpg',
+      '/chakchak/chakchak-landing4.jpg',
       '/chakchak/chakchak2.jpg',
       '/chakchak/chakchak3.jpg',
       '/chakchak/chakchak4.jpg',
