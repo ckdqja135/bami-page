@@ -16,6 +16,7 @@ const timeline = [
       '사내 콘텐츠 관리 플랫폼(CMS) 단독 설계·개발 및 사내 서버 배포·운영 - 분산된 영상 자산 관리와 반복 영상 가공 업무를 하나의 제품으로 통합',
       '자사몰·시네마 계정 통합 회원 CS 백오피스 서버 구축으로 상담 조직의 회원 조회·조치 절차 단일화',
       'Nest.js 기반 서버 아키텍처 설계 및 인증·권한·로깅 공통 구조 구현',
+      '제1회·제2회 사내 해커톤 대회 1등 수상',
     ],
   },
   {
@@ -56,8 +57,8 @@ const timeline = [
 ];
 
 const stats = [
-  { icon: Briefcase, label: '완료한 프로젝트', value: '10+', color: 'text-primary' },
-  { icon: Trophy, label: '수상 경력', value: '2회', color: 'text-accent' },
+  { icon: Briefcase, label: '완료한 프로젝트', value: '15+', color: 'text-primary' },
+  { icon: Trophy, label: '수상 경력', value: '4회', color: 'text-accent' },
   { icon: Users, label: '근무 회사', value: '4곳', color: 'text-accent' },
 ];
 
